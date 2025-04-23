@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+
+</head>
+<body>
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="reservar.html">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación</a></li>
+              <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-contract"></i> Contrato de uso</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions-container">
+        <div class="notification-icon">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="profile-dropdown">
+          <button class="profile-trigger">
+            <img src="../imagen/avatar.png" alt="Usuario" class="profile-avatar">
+            <span class="profile-name">María González</span>
+            <i class="fas fa-chevron-down dropdown-arrow"></i>
+          </button>
+          
+          <div class="profile-dropdown-content">
+            <div class="user-preview">
+              <img src="../imagen/avatar.png" alt="Usuario" class="preview-avatar">
+              <div class="user-details">
+                <h4>María González</h4>
+                <p>maria.gonzalez@example.com</p>
+              </div>
+            </div>
+            
+            <ul class="profile-dropdown-menu">
+              <li><a href="perfil.html"><i class="fas fa-user"></i> Ver perfil</a></li>
+              <li><a href="mispuntos.html"><i class="fas fa-star"></i> Mis puntos</a></li>
+              <li><a href="notificacion.html"><i class="fas fa-bell"></i> Notificaciones</a></li>
+              <li class="divider"></li>
+              <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="profile-main">
+    <div class="profile-container">
+      <section class="profile-section profile-info">
+        <div class="profile-header">
+          <div class="profile-avatar-container">
+            <div class="profile-avatar-large">
+              <img src="../imagen/avatar.png" alt="Avatar" class="avatar-img-large" id="mainAvatar">
+              <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+              <button class="avatar-edit-large" id="changeAvatarBtn">
+                <i class="fas fa-camera"></i> Cambiar foto
+              </button>
+            </div>
+            <div class="profile-titles">
+              <h1>María González</h1>
+              <p class="profile-member-since">Miembro desde: Enero 2023</p>
+              <div class="profile-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>4.5</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="profile-stats-container">
+            <div class="profile-stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon" style="background-color: var(--azul-claro);">
+                  <i class="fas fa-bicycle" style="color: var(--azul-oscuro);"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>156</h3>
+                  <p>Viajes realizados</p>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon" style="background-color: var(--verde-claro);">
+                  <i class="fas fa-leaf" style="color: var(--verde-oscuro);"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>78.5 kg</h3>
+                  <p>CO₂ ahorrado</p>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon" style="background-color: #e6ffee;">
+                  <i class="fas fa-medal" style="color: #128b28;"></i>
+                </div>
+                <div class="stat-info">
+                  <h3>Ejemplar</h3>
+                  <p>Nivel actual</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+      
+      <section class="profile-section personal-info">
+        <h2><i class="fas fa-user-edit"></i> Mis datos</h2>
+        <form class="profile-form" id="profileForm">
+          <div class="form-group dual-inputs">
+            <div class="input-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" value="María">
+            </div>
+            <div class="input-group">
+              <label for="apellido">Apellido</label>
+              <input type="text" id="apellido" value="González">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" value="maria.gonzalez@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" value="+57 301 234 5678">
+          </div>
+          
+          <div class="form-group">
+            <label for="documento">Documento de identidad</label>
+            <input type="text" id="documento" value="1.234.567.890" readonly>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="cancelBtn">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar cambios</button>
+          </div>
+        </form>
+      </section>
+      
+      
+      <section class="profile-section security">
+        <h2><i class="fas fa-shield-alt"></i> Seguridad</h2>
+        
+        <div class="security-actions">
+          <button class="security-btn" id="changePasswordBtn">
+            <i class="fas fa-key"></i> Cambiar contraseña
+          </button>
+
+          <button class="security-btn logout" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="chatbot-container" class="chatbot-premium"></div>
+
+  <script src="../js/perfil.js"></script>
+  <script>
+    // Carga diferida del chatbot
+    window.addEventListener('DOMContentLoaded', function() {
+      fetch("../chatbot/chatbot.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("chatbot-container").innerHTML = data;
+          const script = document.createElement('script');
+          script.src = "../chatbot/chatbot.js";
+          document.body.appendChild(script);
+        });
+    });
+  </script>
+
+ <!-- Contenedor del footer -->
+ <div id="footer-container"></div>
+
+ <!-- Cargar Font Awesome (si no lo tienes) -->
+ <script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+ 
+ <!-- Cargar el script que inserta el footer -->
+ <script src="../js/loadFooter.js"></script>
+</body>
+</html>

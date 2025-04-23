@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CycleTech - Bicicletas Compartidas Medellín</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+
+</head>
+<body>
+<!-- Header (igual en ambos archivos) -->
+<header class="header-minimalista">
+  <div class="container-header">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+      </a>
+    </div>
+    
+    <nav class="nav-elegante">
+      <ul class="menu-delgado">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="reservar.html">Reservar</a></li>
+        <li><a href="estaciones.html">Estaciones</a></li>
+        <li><a href="incentivos.html">Incentivos</a></li>
+        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+            <li><a href="incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación</a></li>
+            <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-contract"></i> Contrato de uso</a></li>
+          </ul>
+        </li>
+        <li><a href="contacto.html">Ayuda</a></li>
+      </ul>
+    </nav>
+    
+    <div class="user-actions-container">
+      <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge">3</span>
+      </div>
+      
+      <div class="profile-dropdown">
+        <button class="profile-trigger">
+          <img src="../imagen/avatar.png" alt="Usuario" class="profile-avatar">
+          <span class="profile-name">María González</span>
+          <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </button>
+        
+        <div class="profile-dropdown-content">
+          <div class="user-preview">
+            <img src="../imagen/avatar.png" alt="Usuario" class="preview-avatar">
+            <div class="user-details">
+              <h4>María González</h4>
+              <p>maria.gonzalez@example.com</p>
+            </div>
+          </div>
+          
+          <ul class="profile-dropdown-menu">
+            <li><a href="perfil.html"><i class="fas fa-user"></i> Ver perfil</a></li>
+            <li><a href="mispuntos.html"><i class="fas fa-star"></i> Mis puntos</a></li>
+            <li><a href="notificacion.html"><i class="fas fa-bell"></i> Notificaciones</a></li>
+            <li class="divider"></li>
+            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero section modificado -->
+<section class="hero-claro">
+  <div class="hero-content-claro">
+    <div class="hero-text-container">
+      <h1 class="hero-title-claro">
+        <span class="texto-destacado">Bienvenido de vuelta, María</span>
+      </h1>
+      <div class="hero-mensaje">
+        <p>¿Listo para tu próximo viaje en bicicleta? Revisa la disponibilidad en las estaciones cercanas.</p>
+      </div>
+      
+      <div class="hero-features-claro">
+        <div class="feature-claro">
+          <span><i class="fas fa-star"></i> Tienes 120 puntos</span>
+        </div>
+        <div class="feature-claro">
+          <span><i class="fas fa-bicycle"></i> 156 viajes realizados</span>
+        </div>
+        <div class="feature-claro">
+          <span><i class="fas fa-leaf"></i> Has ahorrado 78.5kg de CO₂</span>
+        </div>
+      </div>
+      
+      <div class="hero-cta-claro">
+        <a href="reservar.html" class="btn-hero btn-hero-azul">
+          <i class="fas fa-bicycle"></i> Reservar ahora
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="hero-bottom-imagen">
+    <a href="faq.html" class="imagen-preguntas">
+      <img src="../imagen/preguntas.png" alt="¿Necesitas ayuda con tu viaje?">
+    </a>
+  </div>
+</section>
+
+
+<!-- Sección "Cómo funciona" -->
+<section id="como-funciona" class="steps-section">
+  <div class="section-header">
+    <h2>¡Pedalear nunca fue tan fácil!</h2>
+    <p class="section-subtitle">Solo sigue estos pasos</p>
+    <div class="divider-gradient"></div>
+  </div>
+  
+  <div class="steps-container">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <img src="../imagen/paso1.png" alt="Registro" class="step-image">
+      <h3>Regístrate</h3>
+      <p>Crea tu cuenta con tus datos básicos. Recuerda escanear tu factura de servicios, cédula y cívica personalizada.</p>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <img src="../imagen/paso2.png" alt="Confirmación" class="step-image">
+      <h3>Espera confirmación</h3>
+      <p>Recibirás un correo de confirmación. Una vez activado tu perfil, podrás hacer reservas y liberar bicicletas directamente desde CycleTech.</p>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <img src="../imagen/paso3.png" alt="Reserva" class="step-image">
+      <h3>Reserva o dirígete</h3>
+      <p>Usa la app para reservar tu bici hasta por 15 minutos y asegúrala mientras llegas.
+        ¿Ya estás en la estación? Libérala al instante desde CycleTech y empieza tu trayecto.</p>
+    </div>
+    
+    <div class="step-card">
+      <div class="step-number">4</div>
+      <img src="../imagen/paso4.png" alt="Disfruta" class="step-image">
+      <h3>¡Recorre Medellín con EnCicla!</h3>
+      <p>Verifica que la bici esté en buen estado antes de salir. Recuerda renovar tu préstamo cada hora para seguir rodando sin interrupciones. ¡Disfruta el viaje y pedalea con responsabilidad!</p>
+    </div>
+  </div>
+</section>
+<!-- Sección documentos -->
+<section class="documents-section">
+<div class="documents-container">
+  <div class="document-card">
+    <div class="doc-icon">
+      <i class="fas fa-file-contract"></i>
+    </div>
+    <h3>Manual de Usuario</h3>
+    <p>Guía completa para usar CycleTech</p>
+    <a href="../pdf/manual.pdf" class="btn-document" download>
+      <i class="fas fa-download"></i> Descargar PDF
+    </a>
+  </div>
+  
+  <div class="document-card">
+    <div class="doc-icon">
+      <i class="fas fa-list-alt"></i>
+    </div>
+    <h3>Reglamentación</h3>
+    <p>Normas y sanciones del sistema</p>
+    <a href="incumplimientos.html" class="btn-document">
+      <i class="fas fa-external-link-alt"></i> Ver Reglamentación
+    </a>
+  </div>
+  
+  <div class="document-card">
+    <div class="doc-icon">
+      <i class="fas fa-handshake"></i>
+    </div>
+    <h3>Contrato de uso</h3>
+    <p>Términos y condiciones del servicio</p>
+    <a href="../pdf/manual.pdf" class="btn-document" download>
+      <i class="fas fa-download"></i> Descargar PDF
+    </a>
+  </div>
+</div>
+</section>
+
+  <!-- Mapa de estaciones -->
+  <section class="map-section">
+    <div class="section-header">
+      <h2>Estaciones EnCicla</h2>
+      <p class="section-subtitle">Disponibilidad en tiempo real</p>
+      <div class="divider-gradient"></div>
+    </div>
+    
+    <div class="stations-display">
+      <div class="stations-map-container">
+        <div id="stations-map"></div>
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-icon available"></span>
+            <span>Bicicletas disponibles</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon anchorage"></span>
+            <span>Anclajes disponibles</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon both"></span>
+            <span>Ambos disponibles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../js/mapa-compartido.js"></script>
+
+<script src="../js/usuario.js"></script>
+<!-- Contenedor del footer -->
+<div id="footer-container"></div>
+
+<!-- Cargar Font Awesome (si no lo tienes) -->
+<script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+
+<!-- Cargar el script que inserta el footer -->
+<script src="../js/loadFooter.js"></script>
+</body>
+</html>

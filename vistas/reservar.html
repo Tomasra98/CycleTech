@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservar Bicicleta - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+
+</head>
+<body>
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="reservar.html" class="active-menu">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación</a></li>
+              <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-contract"></i> Contrato de uso</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions-container">
+        <div class="notification-icon">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="profile-dropdown">
+          <button class="profile-trigger">
+            <img src="../imagen/avatar.png" alt="Usuario" class="profile-avatar">
+            <span class="profile-name">María González</span>
+            <i class="fas fa-chevron-down dropdown-arrow"></i>
+          </button>
+          
+          <div class="profile-dropdown-content">
+            <div class="user-preview">
+              <img src="../imagen/avatar.png" alt="Usuario" class="preview-avatar">
+              <div class="user-details">
+                <h4>María González</h4>
+                <p>maria.gonzalez@example.com</p>
+              </div>
+            </div>
+            
+            <ul class="profile-dropdown-menu">
+              <li><a href="perfil.html"><i class="fas fa-user"></i> Ver perfil</a></li>
+              <li><a href="mispuntos.html"><i class="fas fa-star"></i> Mis puntos</a></li>
+              <li><a href="notificacion.html"><i class="fas fa-bell"></i> Notificaciones</a></li>
+              <li class="divider"></li>
+              <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="reservation-container">
+    <div class="reservation-steps">
+      <div class="step active" data-step="1">
+        <span class="step-number">1</span>
+        <span class="step-title">Seleccionar estación</span>
+      </div>
+      <div class="step" data-step="2">
+        <span class="step-number">2</span>
+        <span class="step-title">Confirmar reserva</span>
+      </div>
+      <div class="step" data-step="3">
+        <span class="step-number">3</span>
+        <span class="step-title">Retirar bicicleta</span>
+      </div>
+    </div>
+
+    <div class="reservation-content">
+      <div class="station-selection" id="step-1">
+        <h2><i class="fas fa-map-marker-alt"></i> Estación seleccionada</h2>
+        <div class="selected-station-card">
+          <div class="station-info">
+            <h3 id="station-name">Universidad de Antioquia</h3>
+            <p><i class="fas fa-bicycle"></i> Bicicletas disponibles: <span id="available-bikes">5</span></p>
+            <p><i class="fas fa-map-pin"></i> <span id="station-address">Cl. 67 #53-108, Medellín</span></p>
+            <p><i class="fas fa-clock"></i> <span id="station-schedule">5:30 AM - 10:00 PM</span></p>
+          </div>
+          <div class="station-map" id="mini-map"></div>
+        </div>
+
+        <div class="reservation-time">
+          <h3><i class="fas fa-clock"></i> Reservar con anticipación</h3>
+          <p>Puedes reservar hasta con 15 minutos de anticipación</p>
+          <div class="time-selection">
+            <label for="reservation-time">Selecciona hora de retiro:</label>
+            <input type="datetime-local" id="reservation-time" min="" max="">
+          </div>
+        </div>
+
+        <button class="btn-continue" id="continue-to-confirm">Continuar</button>
+      </div>
+
+      <div class="reservation-confirmation hidden" id="step-2">
+        <h2><i class="fas fa-check-circle"></i> Confirmar reserva</h2>
+        <div class="reservation-summary">
+          <div class="summary-card">
+            <h3>Detalles de tu reserva</h3>
+            <div class="summary-item">
+              <span class="summary-label">Estación:</span>
+              <span class="summary-value" id="summary-station">Universidad de Antioquia</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Dirección:</span>
+              <span class="summary-value" id="summary-address">Cl. 67 #53-108, Medellín</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Hora de retiro:</span>
+              <span class="summary-value" id="summary-time">Hoy, 4:30 PM</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Bicicleta asignada:</span>
+              <span class="summary-value" id="summary-bike">#B-2478</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Código de liberación:</span>
+              <span class="summary-value code" id="summary-code">7H9K2L</span>
+            </div>
+          </div>
+
+          <div class="reservation-notice">
+            <div class="notice-icon">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="notice-content">
+              <h4>Importante</h4>
+              <ul>
+                <li>La reserva estará activa por 15 minutos</li>
+                <li>Presenta tu código en la estación para liberar la bicicleta</li>
+                <li>Si no retiras la bicicleta, se cancelará automáticamente</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="confirmation-actions">
+          <button class="btn-secondary" id="back-to-selection">Atrás</button>
+          <button class="btn-primary" id="confirm-reservation">Confirmar reserva</button>
+        </div>
+      </div>
+
+      <div class="reservation-complete hidden" id="step-3">
+        <div class="complete-card">
+          <div class="complete-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2>¡Reserva confirmada!</h2>
+          <p>Tu bicicleta está reservada en la estación <strong id="complete-station">Universidad de Antioquia</strong></p>
+          
+          <div class="reservation-details">
+            <div class="detail-item">
+              <span class="detail-label">Bicicleta:</span>
+              <span class="detail-value" id="complete-bike">#B-2478</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Código:</span>
+              <span class="detail-value code" id="complete-code">7H9K2L</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Hora límite:</span>
+              <span class="detail-value" id="complete-time">4:45 PM</span>
+            </div>
+          </div>
+
+          <div class="qr-code">
+            <img src="../imagen/qr-sample.png" alt="Código QR para liberación">
+            <p>Escanéalo en la estación para liberar tu bicicleta</p>
+          </div>
+
+          <div class="complete-actions">
+            <button class="btn-secondary">
+              <i class="fas fa-share"></i> Compartir reserva
+            </button>
+            <button class="btn-primary" id="view-directions">
+              <i class="fas fa-directions"></i> Cómo llegar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="chatbot-container"></div>
+
+  <script src="../js/reservar.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Carga diferida del chatbot
+    window.addEventListener('DOMContentLoaded', function() {
+      fetch("../chatbot/chatbot.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("chatbot-container").innerHTML = data;
+          const script = document.createElement('script');
+          script.src = "../chatbot/chatbot.js";
+          document.body.appendChild(script);
+        });
+    });
+  </script>
+
+  <div id="footer-container"></div>
+  <script src="../js/loadFooter.js"></script>
+</body>
+</html>

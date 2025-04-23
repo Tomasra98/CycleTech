@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Puntos - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+
+</head>
+<body>
+    <header class="header-minimalista">
+        <div class="container-header">
+          <div class="logo-container">
+            <a href="index.html">
+              <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+            </a>
+          </div>
+          
+          <nav class="nav-elegante">
+            <ul class="menu-delgado">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="reservar.html">Reservar</a></li>
+              <li><a href="estaciones.html">Estaciones</a></li>
+              <li><a href="incentivos.html">Incentivos</a></li>
+              <li><a href="faq.html">Preguntas Frecuentes</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+                  <li><a href="incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación</a></li>
+                  <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-contract"></i> Contrato de uso</a></li>
+                </ul>
+              </li>
+              <li><a href="contacto.html">Ayuda</a></li>
+            </ul>
+          </nav>
+          
+          <div class="user-actions-container">
+            <div class="notification-icon">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge">3</span>
+            </div>
+            
+            <div class="profile-dropdown">
+              <button class="profile-trigger">
+                <img src="../imagen/avatar.jpg" alt="Usuario" class="profile-avatar">
+                <span class="profile-name">María González</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+              
+              <div class="profile-dropdown-content">
+                <div class="user-preview">
+                  <img src="../imagen/avatar.jpg" alt="Usuario" class="preview-avatar">
+                  <div class="user-details">
+                    <h4>María González</h4>
+                    <p>maria.gonzalez@example.com</p>
+                  </div>
+                </div>
+                
+                <ul class="profile-dropdown-menu">
+                  <li><a href="perfil.html"><i class="fas fa-user"></i> Ver perfil</a></li>
+                  <li><a href="mispuntos.html"><i class="fas fa-star"></i> Mis puntos</a></li>
+                  <li><a href="notificacion.html"><i class="fas fa-bell"></i> Notificaciones</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
+      <main class="puntos-container">
+        <!-- 1. Título principal -->
+        <section class="puntos-header">
+          <h1><i class="fas fa"></i> Tus puntos CycleTech</h1>
+          <p class="motivacion">Cada recorrido cuenta. ¡Sigue sumando y canjea tus recompensas!</p>
+        </section>
+    
+        <!-- 2. Resumen general de puntos -->
+        <section class="resumen-puntos">
+          <div class="puntos-circular">
+            <div class="circulo-progreso" data-puntos="120" data-max="150">
+              <span class="puntos-total">120 pts</span>
+              <div class="nivel-actual">Ciclista Ejemplar</div>
+            </div>
+            <div class="proximo-nivel">
+              <i class="fas fa-medal"></i>
+              <span>Próximo nivel: Embajador CycleTech en 30 pts más</span>
+            </div>
+          </div>
+        </section>
+    
+        <!-- 3. Historial de puntos -->
+        <section class="historial-puntos">
+          <h2><i class="fas fa-history"></i> Historial de puntos</h2>
+          <div class="filtros-historial">
+            <select id="filtro-mes">
+              <option value="todos">Todos los meses</option>
+              <option value="abril">Abril 2024</option>
+              <option value="marzo">Marzo 2024</option>
+            </select>
+            <select id="filtro-tipo">
+              <option value="todos">Todos los tipos</option>
+              <option value="ganados">Puntos ganados</option>
+              <option value="perdidos">Puntos perdidos</option>
+            </select>
+          </div>
+          
+          <div class="tabla-historial">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Acción realizada</th>
+                  <th>Puntos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="positivo">
+                  <td>15 abril</td>
+                  <td>Devolviste bici en estación recomendada</td>
+                  <td>+15</td>
+                </tr>
+                <tr class="negativo">
+                  <td>13 abril</td>
+                  <td>No reclamaste tu bicicleta reservada</td>
+                  <td>-15</td>
+                </tr>
+                <tr class="positivo">
+                  <td>12 abril</td>
+                  <td>Usaste la bici por más de 15 minutos</td>
+                  <td>+5</td>
+                </tr>
+                <tr class="positivo">
+                  <td>10 abril</td>
+                  <td>Reportaste una falla técnica</td>
+                  <td>+10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+    
+        <!-- 4. Recompensas disponibles -->
+        <section class="recompensas-disponibles">
+          <h2><i class="fas fa-gift"></i> Recompensas disponibles</h2>
+          <div class="grid-recompensas">
+            <div class="tarjeta-recompensa" data-puntos="50">
+              <div class="recompensa-img" style="background-image: url('../imagen/donuts.jpg')"></div>
+              <h3>10% de descuento en DonutsManía</h3>
+              <p class="puntos-recompensa">50 pts</p>
+              <button class="btn-canjear">Canjear</button>
+            </div>
+            
+            <div class="tarjeta-recompensa" data-puntos="80">
+              <div class="recompensa-img" style="background-image: url('../imagen/cafe.jpg')"></div>
+              <h3>Café gratis en RutaCafé</h3>
+              <p class="puntos-recompensa">80 pts</p>
+              <button class="btn-canjear">Canjear</button>
+            </div>
+            
+            <div class="tarjeta-recompensa" data-puntos="100">
+              <div class="recompensa-img" style="background-image: url('../imagen/taller.jpg')"></div>
+              <h3>Kit de limpieza en BiciTaller</h3>
+              <p class="puntos-recompensa">100 pts</p>
+              <button class="btn-canjear">Canjear</button>
+            </div>
+          </div>
+        </section>
+    
+        <!-- 5. Cómo sumar más puntos -->
+        <section class="sumar-puntos">
+          <h2><i class="fas fa-plus-circle"></i> ¿Cómo seguir sumando puntos?</h2>
+          <ul class="lista-acciones">
+            <li><i class="fas fa-check-circle"></i> Reclamar tu reserva a tiempo</li>
+            <li><i class="fas fa-check-circle"></i> Usar la bici más de 15 minutos</li>
+            <li><i class="fas fa-check-circle"></i> Devolverla correctamente</li>
+            <li><i class="fas fa-check-circle"></i> Reportar fallos</li>
+          </ul>
+          <a href="incentivos.html" class="btn-ver-mas">Ver todas las formas de ganar puntos</a>
+        </section>
+    
+        <!-- 6. Llamado a la acción -->
+        <section class="cta-puntos">
+          <button class="btn-primario btn-canjear-destacado">
+            <i class="fas fa-gift"></i> Canjear mis puntos ahora
+          </button>
+          <p class="alternativo">¿No tienes suficientes puntos? <a href="incentivos.html">Sigue pedaleando y acumula más</a></p>
+        </section>
+    
+        <!-- 7. Ayuda rápida -->
+        <section class="ayuda-rapida">
+          <a href="faq.html#puntos" class="link-ayuda">
+            <i class="fas fa-question-circle"></i> ¿Cómo funciona el sistema de puntos?
+          </a>
+        </section>
+      </main>
+    
+      <!-- Footer y scripts -->
+      <div id="footer-container"></div>
+      <script src="../js/puntos.js"></script>
+      <script src="../js/loadFooter.js"></script>
+    </body>
+    </html>

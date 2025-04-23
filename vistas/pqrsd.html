@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario PQRSD - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+
+
+</head>
+<body>
+  <!-- Header -->
+  <!-- Header premium simplificado -->
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="principal.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="principal.html" class="active-menu">Inicio</a></li>
+          <li><a href="login.html">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download="Manual-CycleTech.pdf"><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="../vistas/incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación (Incumplimientos)</a></li>
+              <li><a href="../pdf/manual.pdf" download="Contrato-CycleTech.pdf"><i class="fas fa-file-contract"></i> Contrato de uso (PDF)</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons-minimal">
+        <a href="login.html" class="btn-auth btn-login-simple">Iniciar Sesión</a>
+        <a href="registro.html" class="btn-auth btn-register-minimal">Registrarse</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Hero Section -->
+  <section class="pqrsd-hero">
+    <div class="pqrsd-hero-content">
+      <h1><i class="fas fa-file-alt"></i> Formulario PQRSD</h1>
+      <p>Por favor completa el siguiente formulario para Peticiones, Quejas, Reclamos, Sugerencias o Denuncias</p>
+    </div>
+  </section>
+
+  <!-- Main Form -->
+  <main class="pqrsd-container">
+    <form id="pqrsd-form" class="pqrsd-form" action="#" method="POST" enctype="multipart/form-data">
+      <!-- Sección de información básica -->
+      <div class="form-section">
+        <h2><i class="fas fa-info-circle"></i> Información Básica</h2>
+        
+        <div class="form-group required">
+          <label for="tipo-solicitud">Tipo de solicitud</label>
+          <select id="tipo-solicitud" name="tipo-solicitud" required>
+            <option value="" disabled selected>Seleccionar tipo de solicitud</option>
+            <option value="peticion">Petición</option>
+            <option value="queja">Queja</option>
+            <option value="reclamo">Reclamo</option>
+            <option value="sugerencia">Sugerencia</option>
+            <option value="denuncia">Denuncia</option>
+          </select>
+          <div class="error-message">Seleccione un tipo de solicitud.</div>
+        </div>
+
+        <div class="form-group required">
+          <label for="proyecto">Proyecto </label>
+          <select id="proyecto" name="proyecto" required>
+            <option value="" disabled selected>Seleccionar proyecto</option>
+            <option value="encicla">EnCicla</option>
+            <option value="cycletech<">Cycletech</option>
+
+          </select>
+        </div>
+
+        <div class="form-group required">
+          <label for="tipo-solicitante">Tipo de solicitante</label>
+          <select id="tipo-solicitante" name="tipo-solicitante" required>
+            <option value="" disabled selected>Seleccionar tipo de solicitante</option>
+            <option value="natural">Persona Natural</option>
+            <option value="juridica">Persona Jurídica</option>
+            <option value="anonimo">Prefiero no identificarme</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Sección de información personal -->
+      <div class="form-section">
+        <h2><i class="fas fa-user-circle"></i> Datos Personales</h2>
+        
+        <div class="form-group required">
+          <label for="nombre">Nombre completo o Razón social </label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre completo o razón social">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group required" style="flex: 1;">
+            <label for="tipo-documento">Tipo de documento </label>
+            <select id="tipo-documento" name="tipo-documento" required>
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="cc">Cédula de Ciudadanía</option>
+              <option value="ce">Cédula de Extranjería</option>
+              <option value="pasaporte">Pasaporte</option>
+              <option value="nit">NIT</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group required" style="flex: 1;">
+            <label for="numero-documento">Número de documento </label>
+            <input type="text" id="numero-documento" name="numero-documento" required placeholder="Número de documento">
+          </div>
+        </div>
+
+        <div class="form-group required">
+          <label for="email">Correo electrónico </label>
+          <input type="email" id="email" name="email" required placeholder="Ingresar correo electrónico">
+          <div class="hint">Este será el medio principal de respuesta</div>
+        </div>
+      </div>
+
+      <!-- Sección de contenido -->
+      <div class="form-section">
+        <h2><i class="fas fa-edit"></i> Contenido de la Solicitud</h2>
+        
+        <div class="form-group required">
+          <label for="asunto">Asunto </label>
+          <input type="text" id="asunto" name="asunto" required placeholder="Resumen breve de tu solicitud">
+        </div>
+
+        <div class="form-group required">
+          <label for="descripcion">Descripción </label>
+          <textarea id="descripcion" name="descripcion" required rows="6" placeholder="Realiza tu consulta con todos los detalles necesarios"></textarea>
+          <div class="hint">Mínimo 50 caracteres</div>
+        </div>
+
+        <div class="form-group">
+          <label for="adjuntos">Adjuntar archivos</label>
+          <div class="file-upload">
+            <input type="file" id="adjuntos" name="adjuntos" multiple accept=".jpg,.png,.pdf,.doc,.docx">
+            <label for="adjuntos" class="upload-btn">
+              <i class="fas fa-cloud-upload-alt"></i> Seleccionar archivos
+            </label>
+            <div class="file-info">Ningún archivo seleccionado</div>
+          </div>
+          <div class="hint">(Máximo 10MB en total) Formatos permitidos: jpg, png, pdf, doc, docx</div>
+        </div>
+      </div>
+
+      <!-- Términos y envío -->
+      <div class="form-footer">
+        <div class="form-group">
+          <input type="checkbox" id="terminos" name="terminos" required>
+          <label for="terminos">Acepto la <a href="#" target="_blank">Política de Tratamiento de Datos</a> y autorizo el uso de mi información según lo establecido *</label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Enviar Solicitud
+          </button>
+          <button type="reset" class="reset-btn">
+            <i class="fas fa-undo"></i> Limpiar Formulario
+          </button>
+        </div>
+      </div>
+    </form>
+
+
+      <!-- Botón de volver -->
+      <div class="back-button-container">
+        <a href="javascript:history.back()" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Volver
+        </a>
+      </div>
+    </form>
+  </main>
+  </main>
+
+ <!-- Contenedor del footer -->
+ <div id="footer-container"></div>
+
+ <!-- Cargar Font Awesome (si no lo tienes) -->
+ <script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+ 
+ <!-- Cargar el script que inserta el footer -->
+ <script src="../js/loadFooter.js"></script>
+</body>
+</html>

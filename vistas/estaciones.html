@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estaciones EnCicla - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+
+</head>
+<body>
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="reservar.html" class="active-menu">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación</a></li>
+              <li><a href="../pdf/manual.pdf" download><i class="fas fa-file-contract"></i> Contrato de uso</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-actions-container">
+        <div class="notification-icon">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="profile-dropdown">
+          <button class="profile-trigger">
+            <img src="../imagen/avatar.png" alt="Usuario" class="profile-avatar">
+            <span class="profile-name">María González</span>
+            <i class="fas fa-chevron-down dropdown-arrow"></i>
+          </button>
+          
+          <div class="profile-dropdown-content">
+            <div class="user-preview">
+              <img src="../imagen/avatar.png" alt="Usuario" class="preview-avatar">
+              <div class="user-details">
+                <h4>María González</h4>
+                <p>maria.gonzalez@example.com</p>
+              </div>
+            </div>
+            
+            <ul class="profile-dropdown-menu">
+              <li><a href="perfil.html"><i class="fas fa-user"></i> Ver perfil</a></li>
+              <li><a href="mispuntos.html"><i class="fas fa-star"></i> Mis puntos</a></li>
+              <li><a href="notificacion.html"><i class="fas fa-bell"></i> Notificaciones</a></li>
+              <li class="divider"></li>
+              <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="stations-hero">
+    <div class="hero-stations-content">
+      <h1 class="hero-stations-title">
+        <span class="texto-destacado">Estaciones EnCicla</span>
+      </h1>
+      <div class="hero-stations-message">
+        <p>Consulta en tiempo real la disponibilidad de bicicletas y anclajes</p>
+      </div>
+      
+      <div class="stations-search-container">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="search-input" placeholder="Buscar estación...">
+          <button class="btn-search" id="search-btn">Buscar</button>
+        </div>
+        <div class="filters-toggle">
+          <button class="btn-filters" id="toggle-filters">
+            <i class="fas fa-sliders-h"></i> Filtros
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="stations-main-content">
+    <div class="stations-filters-container" id="filters-container">
+      <div class="filter-group">
+        <label for="zone-filter"><i class="fas fa-map-marker-alt"></i> Zona:</label>
+        <select id="zone-filter">
+          <option value="all">Todas las zonas</option>
+          <option value="centro">Centro</option>
+          <option value="poblado">El Poblado</option>
+          <option value="laureles">Laureles</option>
+          <option value="belen">Belén</option>
+          <option value="boston">Boston</option>
+          <option value="sura">Sura</option>
+          <option value="guayabal">Guayabal</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="status-filter"><i class="fas fa-bicycle"></i> Estado:</label>
+        <select id="status-filter">
+          <option value="all">Todas</option>
+          <option value="available">Con bicicletas disponibles</option>
+          <option value="anchorage">Con anclajes disponibles</option>
+          <option value="both">Con ambos disponibles</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="type-filter"><i class="fas fa-terminal"></i> Tipo:</label>
+        <select id="type-filter">
+          <option value="all">Ambos tipos</option>
+          <option value="automatic">Automáticas</option>
+          <option value="manual">Manuales</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="stations-display">
+      <div class="stations-map-container">
+        <div id="stations-map"></div>
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-icon available"></span>
+            <span>Bicicletas disponibles</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon anchorage"></span>
+            <span>Anclajes disponibles</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon both"></span>
+            <span>Ambos disponibles</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="stations-list-container">
+        <div class="stations-list-header">
+          <h3><i class="fas fa-list"></i> Estaciones cercanas</h3>
+          <div class="sort-options">
+            <span>Ordenar por:</span>
+            <select id="sort-stations">
+              <option value="distance">Distancia</option>
+              <option value="availability">Disponibilidad</option>
+              <option value="name">Nombre</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="stations-list" id="stations-list">
+          <!-- Las estaciones se cargarán dinámicamente con JavaScript -->
+          <div class="loading-stations">
+            <i class="fas fa-spinner fa-spin"></i> Cargando estaciones...
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="chatbot-container" class="chatbot-premium">
+    <div class="chatbot-bubble">
+      <div class="chatbot-pulse">
+        <i class="fas fa-comment-dots"></i>
+      </div>
+      <span class="chatbot-tooltip">¿Necesitas ayuda?</span>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/estaciones.js"></script>
+  <script src="../chatbot/chatbot.js"></script>
+  
+  <div id="footer-container"></div>
+  <script src="../js/loadFooter.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar sesión - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+
+</head>
+<body>
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="principal.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="principal.html">Inicio</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="login-container">
+    <div class="login-form-container">
+      <div class="form-header">
+        <h1>Iniciar sesión</h1>
+        <p>Ingresa tu documento y contraseña</p>
+      </div>
+      
+      <form class="login-form" action="#" method="POST">
+        <div class="input-group">
+          <label for="documento">Número de documento</label>
+          <input type="text" id="documento" name="documento" required placeholder="Ej: 1234567890" pattern="[0-9]{6,12}">
+        </div>
+
+        <div class="input-group">
+          <label for="contrasena">Contraseña</label>
+          <div class="input-with-icon">
+            <input type="password" id="contrasena" name="contrasena" required placeholder="••••••••">
+            <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="forgot-password">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="btn-login">
+          <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+        </button>
+
+        <div class="register-link">
+          ¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="../scripts/login.js"></script>
+
+ <!-- Contenedor del footer -->
+ <div id="footer-container"></div>
+
+ <!-- Cargar Font Awesome (si no lo tienes) -->
+ <script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+ 
+ <!-- Cargar el script que inserta el footer -->
+ <script src="../js/loadFooter.js"></script>
+
+</body>
+</html>

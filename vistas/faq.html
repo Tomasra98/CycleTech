@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+
+
+</head>
+<body>
+  <!-- Header premium simplificado -->
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="principal.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="principal.html" class="active-menu">Inicio</a></li>
+          <li><a href="login.html">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download="Manual-CycleTech.pdf"><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="../vistas/incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación (Incumplimientos)</a></li>
+              <li><a href="../pdf/manual.pdf" download="Contrato-CycleTech.pdf"><i class="fas fa-file-contract"></i> Contrato de uso (PDF)</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons-minimal">
+        <a href="login.html" class="btn-auth btn-login-simple">Iniciar Sesión</a>
+        <a href="registro.html" class="btn-auth btn-register-minimal">Registrarse</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Hero section -->
+  <section class="faq-hero">
+    <div class="faq-hero-content">
+      <h1 class="faq-hero-title">
+        <i class="fas fa-question-circle"></i> Preguntas Frecuentes
+      </h1>
+      <p class="faq-hero-subtitle">Encuentra respuestas rápidas a las dudas más comunes sobre CycleTech</p>
+      
+      <div class="faq-search-container">
+        <div class="faq-search-box">
+          <input type="text" placeholder="Buscar en preguntas frecuentes...">
+          <button class="faq-search-btn">
+            <i class="fas fa-search"></i> Buscar
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <main class="faq-main-content">
+    <div class="faq-container">
+      <!-- Filtros por categoría -->
+      <div class="faq-categories">
+        <button class="category-btn active" data-category="all">Todas</button>
+        <button class="category-btn" data-category="registro">Registro</button>
+        <button class="category-btn" data-category="reservas">Reservas</button>
+        <button class="category-btn" data-category="uso">Uso del sistema</button>
+        <button class="category-btn" data-category="incentivos">Incentivos</button>
+        <button class="category-btn" data-category="tecnicos">Problemas técnicos</button>
+      </div>
+      
+      <!-- Acordeón de preguntas -->
+      <div class="faq-accordion">
+        <!-- Pregunta 1 -->
+        <div class="faq-item" data-category="registro">
+          <button class="faq-question">
+            <span class="faq-question-text">¿Cómo me registro en CycleTech?</span>
+            <span class="faq-category-label">Registro</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Para registrarte en CycleTech sigue estos pasos:</p>
+            <ol>
+              <li>Haz clic en "Registrarse" en la esquina superior derecha</li>
+              <li>Completa el formulario con tus datos personales</li>
+              <li>Verifica tu correo electrónico con el enlace que te enviamos</li>
+              <li>Espera la confirmación de tu cuenta (puede tardar hasta 24 horas)</li>
+            </ol>
+            <p>Una vez verificado, podrás acceder a todas las funcionalidades de CycleTech.</p>
+          </div>
+        </div>
+        
+        <!-- Pregunta 2 -->
+        <div class="faq-item" data-category="reservas">
+          <button class="faq-question">
+            <span class="faq-question-text">¿Cómo reservo una bicicleta desde la app web?</span>
+            <span class="faq-category-label">Reservas</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Para reservar una bicicleta:</p>
+            <ol>
+              <li>Inicia sesión en tu cuenta CycleTech</li>
+              <li>Navega a la sección "Reservar" o selecciona una estación en el mapa</li>
+              <li>Selecciona la estación donde deseas recoger la bicicleta</li>
+              <li>Haz clic en el botón "Reservar"</li>
+              <li>Confirma la reserva</li>
+            </ol>
+            <p>La bicicleta quedará apartada por un máximo de <strong>15 minutos</strong>.</p>
+          </div>
+        </div>
+        
+        <!-- Pregunta 3 -->
+        <div class="faq-item" data-category="reservas">
+          <button class="faq-question">
+            <span class="faq-question-text">¿Qué pasa si no llego a tiempo después de reservar?</span>
+            <span class="faq-category-label">Reservas</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Si no llegas a la estación dentro de los <strong>15 minutos</strong> siguientes a tu reserva:</p>
+            <ul>
+              <li>La reserva se cancela automáticamente</li>
+              <li>La bicicleta queda disponible para otros usuarios</li>
+              <li>Tu cuenta podría recibir una penalización en el sistema de incentivos si esto ocurre frecuentemente</li>
+            </ul>
+            <p>Si anticipas que no podrás llegar a tiempo, puedes cancelar la reserva manualmente desde la app.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección de contacto -->
+      <div class="faq-contact-section">
+        <div class="faq-contact-card">
+          <h3><i class="fas fa-headset"></i> ¿No encontraste lo que buscabas?</h3>
+          <p>Nuestro equipo de soporte está listo para ayudarte con cualquier duda adicional.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-comments"></i>
+              <h4>Chat en vivo</h4>
+              <p>Disponible 24/7</p>
+              <button class="contact-btn">
+                <i class="fas fa-comment-dots"></i> Abrir chat
+              </button>
+            </div>
+            
+            <div class="contact-method">
+              <i class="fas fa-envelope"></i>
+              <h4>Correo electrónico</h4>
+              <p>cycletech.e@gmail.com</p>
+              <button class="contact-btn">
+                <i class="fas fa-paper-plane"></i> Enviar email
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="chatbot-container">
+    <!-- El contenido se cargará dinámicamente -->
+  </div>
+    
+  <script src="../js/faq.js"></script>
+  <script>
+    // Carga diferida del chatbot
+    window.addEventListener('DOMContentLoaded', function() {
+      fetch("../chatbot/chatbot.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("chatbot-container").innerHTML = data;
+          const script = document.createElement('script');
+          script.src = "../chatbot/chatbot.js";
+          document.body.appendChild(script);
+        });
+    });
+  </script>
+
+ <!-- Contenedor del footer -->
+ <div id="footer-container"></div>
+
+ <!-- Cargar Font Awesome (si no lo tienes) -->
+ <script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+ 
+ <!-- Cargar el script que inserta el footer -->
+ <script src="../js/loadFooter.js"></script>
+</body>
+</html>

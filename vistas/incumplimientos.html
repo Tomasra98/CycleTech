@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incumplimientos - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+</head>
+<body>
+  <!-- Header premium simplificado -->
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="principal.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="principal.html" class="active-menu">Inicio</a></li>
+          <li><a href="login.html">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download="Manual-CycleTech.pdf"><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="../vistas/incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación (Incumplimientos)</a></li>
+              <li><a href="../pdf/manual.pdf" download="Contrato-CycleTech.pdf"><i class="fas fa-file-contract"></i> Contrato de uso (PDF)</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons-minimal">
+        <a href="login.html" class="btn-auth btn-login-simple">Iniciar Sesión</a>
+        <a href="registro.html" class="btn-auth btn-register-minimal">Registrarse</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Contenido principal -->
+  <main class="incumplimientos-main">
+    <div class="container">
+      <div class="incumplimientos-header">
+        <h1><i class="fas fa-exclamation-triangle"></i> Incumplimientos y Sanciones</h1>
+        <p>Conoce las normas del sistema y las consecuencias por incumplimiento</p>
+        
+        <div class="filtros-incumplimientos">
+          <div class="search-box">
+            <input type="text" placeholder="Buscar incumplimiento...">
+            <button><i class="search"></i></button>
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="leve">Leves</button>
+            <button class="filter-btn" data-filter="medio">Medios</button>
+            <button class="filter-btn" data-filter="grave">Graves</button>
+            <button class="filter-btn" data-filter="gravisma">Gravísimos</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="incumplimientos-table-container">
+        <table class="incumplimientos-table">
+          <thead>
+            <tr>
+              <th>Cód.</th>
+              <th>Incumplimiento</th>
+              <th>Graduación</th>
+              <th>Tiempo No Uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Leves -->
+            <tr data-graduacion="leve">
+              <td>1</td>
+              <td>Exceder el tiempo de uso establecido de la bicicleta entre 61 minutos y 75 minutos.</td>
+              <td><span class="badge leve">Leve</span></td>
+              <td>3 días</td>
+            </tr>
+            <tr data-graduacion="leve">
+              <td>2</td>
+              <td>Entregar la bicicleta en una estación automática sin la verificación previa de que ha sido correctamente anclada.</td>
+              <td><span class="badge leve">Leve</span></td>
+              <td>3 días</td>
+            </tr>
+            <tr data-graduacion="leve">
+              <td>3</td>
+              <td>Intervenir bicicletas o estaciones para reparar el daño leve, mediante la manipulación no autorizada de las mismas.</td>
+              <td><span class="badge leve">Leve</span></td>
+              <td>3 días</td>
+            </tr>
+            <tr data-graduacion="leve">
+              <td>4</td>
+              <td>No verificar el procedimiento de entrega en las estaciones manuales. Es decir, cuando el usuario(a) no se asegure de que el anfitrión reciba la bicicleta correctamente.</td>
+              <td><span class="badge leve">Leve</span></td>
+              <td>3 días</td>
+            </tr>
+            <tr data-graduacion="leve">
+              <td>5</td>
+              <td>Exceder el tiempo de uso establecido de la bicicleta entre 76 minutos y 120 minutos.</td>
+              <td><span class="badge leve">Leve</span></td>
+              <td>3 días</td>
+            </tr>
+            
+            <!-- Medios -->
+            <tr data-graduacion="medio">
+              <td>6</td>
+              <td>Exceder el tiempo de uso establecido de la bicicleta entre 121 minutos y 180 minutos.</td>
+              <td><span class="badge medio">Medio</span></td>
+              <td>6 días</td>
+            </tr>
+            <tr data-graduacion="medio">
+              <td>7</td>
+              <td>Transportar equipajes, paquetes, o cosas que superen los 10 kg o cuya dimensión sobresalga del largo y ancho de la bicicleta y ponga en riesgo la seguridad del usuario(a) o de terceros.</td>
+              <td><span class="badge medio">Medio</span></td>
+              <td>6 días</td>
+            </tr>
+            <tr data-graduacion="medio">
+              <td>8</td>
+              <td>Adherir calcomanías, publicidad o rayar la bicicleta.</td>
+              <td><span class="badge medio">Medio</span></td>
+              <td>6 días</td>
+            </tr>
+            <tr data-graduacion="medio">
+              <td>9</td>
+              <td>Exceder el tiempo de uso establecido de la bicicleta entre 181 minutos y 240 minutos.</td>
+              <td><span class="badge medio">Medio</span></td>
+              <td>6 días</td>
+            </tr>
+            <tr data-graduacion="medio">
+              <td>10</td>
+              <td>Provocar daños o averías en los componentes de las bicicletas que NO requieran reposición de piezas.</td>
+              <td><span class="badge medio">Medio</span></td>
+              <td>6 días</td>
+            </tr>
+            
+            <!-- Graves -->
+            <tr data-graduacion="grave">
+              <td>11</td>
+              <td>Exceder el tiempo de uso establecido de la bicicleta entre 241 minutos y 360 minutos.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            <tr data-graduacion="grave">
+              <td>12</td>
+              <td>Agredir verbalmente al Anfitrión o a personal del Sistema de Bicicletas Públicas del Valle de Aburrá -EnCicla-.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            <tr data-graduacion="grave">
+              <td>13</td>
+              <td>Ceder indebidamente el contrato o el retiro de la bicicleta para entregarla a un tercero que no está inscrito en el Sistema. Así como la transferencia de la tarjeta Cívica.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            <tr data-graduacion="grave">
+              <td>14</td>
+              <td>Conducir la bicicleta bajo los efectos de sustancias psicoactivas, en estado de alicoramiento, o bajo el efecto de drogas medicinales que alteren el estado de alerta.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            <tr data-graduacion="grave">
+              <td>15</td>
+              <td>Circular sobre una sola rueda, realizar saltos, piruetas, acrobacias u otros movimientos que pongan en riesgo la seguridad del usuario(a), de terceros o que puedan afectar la funcionalidad de la bicicleta.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            <tr data-graduacion="grave">
+              <td>16</td>
+              <td>Transportar menores de edad, personas o animales vivos bien sea cargados, dentro de la canasta o halado con cuerdas o cualquier otro elemento de tracción.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            <tr data-graduacion="grave">
+              <td>17</td>
+              <td>Impulsarse con el apoyo de vehículos en movimiento.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            <tr data-graduacion="grave">
+              <td>18</td>
+              <td>Realizar grafitis o alterar el color de la bicicleta.</td>
+              <td><span class="badge grave">Grave</span></td>
+              <td>15 días</td>
+            </tr>
+            
+            <!-- Gravísimos -->
+            <tr data-graduacion="gravisma">
+              <td>19</td>
+              <td>Exceder el tiempo de uso establecido de la bicicleta de 361 minutos en adelante.</td>
+              <td><span class="badge gravisma">Gravísima</span></td>
+              <td>60 días</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>20</td>
+              <td>Abandonar la bicicleta sin protección en cualquier sitio que la ponga en riesgo de ser hurtada o afectada por la intervención de terceros.</td>
+              <td><span class="badge gravisma">Gravísima</span></td>
+              <td>60 días</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>21</td>
+              <td>Reincidir en la comisión de las infracciones No. 19 y 20.</td>
+              <td><span class="badge gravisma">Gravísima</span></td>
+              <td>120 días</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>22</td>
+              <td>Sustraer la bicicleta, sus partes, o los elementos que forman parte de las estaciones.</td>
+              <td><span class="badge gravisma">Gravísima</span></td>
+              <td>Terminación de contrato</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>23</td>
+              <td>Agredir físicamente al anfitrión o a personal del Sistema de Bicicletas Públicas del Valle de Aburrá -EnCicla-.</td>
+              <td><span class="badge gravisma">Gravísima</span></td>
+              <td>Terminación de contrato</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>24</td>
+              <td>Provocar el hurto de la bicicleta por descuido del usuario(a).</td>
+              <td><span class="badge gravisma">Gravísima</span></td>
+              <td>Terminación de contrato</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>25</td>
+              <td>Ocasionar daños a la infraestructura del Sistema de Bicicletas Públicas.</td>
+              <td><span class="badge gravisma">Gravísima</span></td>
+              <td>Terminación de contrato</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>26</td>
+              <td>Reincidencia en la comisión de las infracciones 1 al 21, en un periodo de seis meses.</td>
+              <td><span class="badge gravisma">Según Sanción</span></td>
+              <td>Terminación de contrato</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>27</td>
+              <td>Reincidir en la comisión de la infracción 13, en un periodo de seis meses.</td>
+              <td><span class="badge gravisma">Según Sanción</span></td>
+              <td>Terminación de contrato</td>
+            </tr>
+            <tr data-graduacion="gravisma">
+              <td>28</td>
+              <td>Utilizar con fines de lucro o explotación económica, la bicicleta entregada en préstamo.</td>
+              <td><span class="badge gravisma">Según Sanción</span></td>
+              <td>Terminación de contrato</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="incumplimientos-footer">
+        <div class="legend">
+          <div class="legend-item">
+            <span class="legend-color leve"></span>
+            <span>Incumplimiento Leve</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color medio"></span>
+            <span>Incumplimiento Medio</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color grave"></span>
+            <span>Incumplimiento Grave</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color gravisma"></span>
+            <span>Incumplimiento Gravísimo</span>
+          </div>
+        </div>
+        
+        <div class="disclaimer">
+          <p><i class="fas fa-info-circle"></i> La reincidencia en incumplimientos puede acarrear sanciones más severas, incluyendo la terminación del contrato de uso.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Chatbot -->
+  <div id="chatbot-container" class="chatbot-premium">
+    <!-- El contenido del chatbot se cargará aquí -->
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/incumplimientos.js"></script>
+  <script src="../chatbot/chatbot.js"></script>
+  <script>
+    // Carga diferida del chatbot
+    window.addEventListener('DOMContentLoaded', function() {
+      fetch("../chatbot/chatbot.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("chatbot-container").innerHTML = data;
+        });
+    });
+  </script>
+
+ <!-- Contenedor del footer -->
+ <div id="footer-container"></div>
+
+ <!-- Cargar Font Awesome (si no lo tienes) -->
+ <script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+ 
+ <!-- Cargar el script que inserta el footer -->
+ <script src="../js/loadFooter.js"></script>
+</body>
+</html>
