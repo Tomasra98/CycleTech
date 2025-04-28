@@ -193,10 +193,17 @@ document.addEventListener('DOMContentLoaded', async function() {
       btn.addEventListener('click', function() {
         if (this.classList.contains('disabled')) return;
         
-        const stationName = this.closest('.station-card').querySelector('h4').textContent;
-        alert(`Abriendo mapa para llegar a ${stationName}`);
-      });
+        const stationCard = this.closest('.station-card');
+        const stationName = stationCard.querySelector('h4').textContent;
+        // Encontrar la estación en el array original
+        const station = stations.find(s => s.name === stationName);
+        if (station && station.position) {
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${station.position[0]},${station.position[1]}`);
+        } else {
+            alert(`No se pudo obtener la ubicación de ${stationName}`);
+        }
     });
+});
   }
 
   // Event listeners

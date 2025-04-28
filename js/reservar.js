@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const stationName = urlParams.get('estacion') || 'Universidad de Antioquia';
     
+    /*
     // Simular datos de la estación (en producción esto vendría de una API)
     const stationData = {
       name: stationName,
@@ -11,12 +12,45 @@ document.addEventListener('DOMContentLoaded', function() {
       bikes: 5,
       position: [6.267135, -75.568865]
     };
+    */
+
+    // Función para cargar y buscar los datos de la estación
+    function loadStationData() {
+      fetch('../data/estaciones.json')
+          .then(response => response.json())
+          .then(stations => {
+              const stationData = stations.find(station => station.name === stationName);
+              
+              if (!stationData) {
+                  console.error('Estación no encontrada:', stationName);
+                  // Mostrar datos por defecto o mensaje de error
+                  return;
+              }
+              
+              // Llamar a la función que actualiza la UI con los datos reales
+              updateUIWithStationData(stationData);
+          })
+          .catch(error => {
+              console.error('Error al cargar las estaciones:', error);
+              // Puedes mostrar datos simulados como fallback
+              const fallbackData = {
+                  name: stationName,
+                  address: 'Dirección no disponible',
+                  schedule: 'Horario no disponible',
+                  bikes: 0,
+                  position: [6.244203, -75.581212] // Posición por defecto (Centro de Medellín)
+              };
+              updateUIWithStationData(fallbackData);
+          });
+  }
   
+    // Función para actualizar la UI con los datos de la estación
+    function updateUIWithStationData(stationData) {
     // Actualizar UI con datos de la estación
-    document.getElementById('station-name').textContent = stationData.name;
-    document.getElementById('station-address').textContent = stationData.address;
-    document.getElementById('station-schedule').textContent = stationData.schedule;
-    document.getElementById('available-bikes').textContent = stationData.bikes;
+      document.getElementById('station-name').textContent = stationData.name;
+      document.getElementById('station-address').textContent = stationData.address;
+      document.getElementById('station-schedule').textContent = stationData.schedule;
+      document.getElementById('available-bikes').textContent = stationData.bikes;
     
     // Configurar mapa pequeño
     const miniMap = L.map('mini-map').setView(stationData.position, 16);
@@ -33,7 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
         iconSize: [40, 40]
       })
     }).addTo(miniMap);
+
+    setupReservationProcess(stationData);
+  }
   
+  function setupReservationProcess(stationData) {
     // Configurar selector de tiempo
     const timeInput = document.getElementById('reservation-time');
     const now = new Date();
@@ -99,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Abrir Google Maps con la ubicación de la estación
       window.open(`https://www.google.com/maps/dir/?api=1&destination=${stationData.position[0]},${stationData.position[1]}`);
     });
-  
+  }
     // Funciones auxiliares
     function formatDateTime(date) {
       return date.toISOString().slice(0, 16);
@@ -127,4 +165,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
+    loadStationData();
   });
