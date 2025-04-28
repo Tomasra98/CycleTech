@@ -27,33 +27,6 @@ body {
   line-height: 1.7;
 }
 
-/* Header minimalista */
-.header-minimalista {
-  background: var(--blanco);
-  box-shadow: var(--sombra-suave);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 0.8rem 2rem;
-}
-
-.container-header {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-simplificado {
-  height: 50px;
-  transition: transform 0.3s ease;
-}
-
-.logo-simplificado:hover {
-  transform: scale(1.05);
-}
-
 /* Menú elegante */
 .menu-delgado {
   display: flex;
@@ -403,9 +376,15 @@ body {
   gap: 6px;
   font-size: 0.9rem;
 }
-
+/*
 .hero-cta-claro {
   margin-top: 1.5rem;
+}
+*/
+.cta-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .btn-hero {
