@@ -35,11 +35,11 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 0.8rem 2rem;
+  padding: 0.4rem 1rem;
 }
 
 .container-header {
-  max-width: 1400px;
+  max-width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -47,7 +47,7 @@ body {
 }
 
 .logo-simplificado {
-  height: 50px;
+  height: 70px;
   transition: transform 0.3s ease;
 }
 
@@ -191,11 +191,11 @@ body {
   color: var(--azul-oscuro);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-
+/*
 .hero-cta-claro {
   margin-top: 2rem;
 }
-
+*/
 .btn-hero {
   padding: 0.8rem 2rem;
   border-radius: 30px;
