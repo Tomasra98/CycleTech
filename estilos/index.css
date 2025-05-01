@@ -1,7 +1,9 @@
 :root {
   --blanco: #ffffff;
   --azul-oscuro: #46798f;
+  --complementario-a-azul-oscuro: #8f7D46;
   --verde-oscuro: #4f7462;
+  --complementario-a-verde-oscuro: #645C42;
   --verde-claro: #dae7c9;
   --azul-claro: #cae7ef;
   --fondo: #e8edf0;
@@ -400,13 +402,13 @@ body {
 }
 
 .btn-hero-azul {
-  background-color: var(--azul-oscuro);
+  background-color: var(--complementario-a-azul-oscuro);
   color: white;
   box-shadow: 0 4px 12px rgba(70, 121, 143, 0.3);
 }
 
 .btn-hero-azul:hover {
-  background-color: var(--verde-oscuro);
+  background-color: var(--complementario-a-verde-oscuro);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(70, 121, 143, 0.4);
 }

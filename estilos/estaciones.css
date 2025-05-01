@@ -343,12 +343,12 @@
 }
 
 .btn-reserve {
-  background-color: var(--azul-oscuro);
+  background-color: var(--complementario-a-azul-oscuro);
   color: white;
 }
 
 .btn-reserve:hover {
-  background-color: var(--verde-oscuro);
+  background-color: var(--complementario-a-verde-oscuro);
 }
 
 .btn-directions {

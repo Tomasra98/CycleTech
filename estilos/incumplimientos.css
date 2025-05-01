@@ -58,7 +58,7 @@
   }
   
   .search-box button {
-    background-color: var(--azul-oscuro);
+    background-color: var(--complementario-a-azul-oscuro);
     color: white;
     border: none;
     padding: 0 1.5rem;
@@ -67,7 +67,7 @@
   }
   
   .search-box button:hover {
-    background-color: var(--verde-oscuro);
+    background-color: var(--complementario-a-verde-oscuro);
   }
   
   .filter-buttons {
