@@ -10,20 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validación de campos de archivo
     const form = document.querySelector('.registro-form');
     if (form) {
-      let isSubmitting = false;
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        if (isSubmitting) return; // Evita doble submit
-        isSubmitting = true;
-        const submitBtn = form.querySelector('button[type="submit"], .btn-registro');
-        if (submitBtn) submitBtn.disabled = true;
+      form.addEventListener('submit', function(e) {
         let isValid = true;
         
         // Validar tipos de archivo
         const fileInputs = [
-          'idDocument', 
-          'civicCard', 
-          'publicServicesInvoice'
+          'doc-identidad', 
+          'tarjeta-civica', 
+          'factura-servicios'
         ];
         
         fileInputs.forEach(id => {
@@ -37,34 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
   
         if (!isValid) {
+          e.preventDefault();
           alert('Por favor adjunte todos los documentos requeridos');
-          if (submitBtn) submitBtn.disabled = false;
-          isSubmitting = false;
-          return;
-        }
-
-        // Crear FormData con todos los campos
-        const formData = new FormData(form);
-        try {
-          const response = await fetch('http://localhost:3000/api/usuarios/registro', {
-            method: 'POST',
-            body: formData
-          });
-          const data = await response.json();
-          if (response.ok) {
-            // Guardar datos básicos del usuario en localStorage para usarlos en otros archivos JS
-            localStorage.setItem('usuario', JSON.stringify({
-              name: formData.get('name'),
-              email: formData.get('email')
-              // Podemos agregar más campos si lo deseas
-            }));
-            alert('¡Registro exitoso!');
-            window.location.href = '../vistas/perfil.html'; // Redirige al perfil o donde prefiramos
-          }
-        } catch (err) {
-          alert('Error de conexión con el servidor.');
-          if (submitBtn) submitBtn.disabled = false;
-          isSubmitting = false;
         }
       });
     }
@@ -82,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     // Validación de solo números para documento, teléfono y cívica
-    ['documentNumber', 'phone', 'civicCardNumber'].forEach(id => {
+    ['documento', 'telefono', 'civica'].forEach(id => {
       const field = document.getElementById(id);
       if (field) {
         field.addEventListener('input', function() {

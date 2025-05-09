@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="../estilos/mispuntos.css">
   <link rel="stylesheet" href="../estilos/notificacion.css">
   <link rel="stylesheet" href="../estilos/reservar.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
 
 </head>
 <body>
@@ -200,9 +202,10 @@
           </div>
 
           <div class="qr-code">
-            <img src="../imagen/qr-sample.png" alt="Código QR para liberación">
+            <div id="qr-code-canvas"></div>
             <p>Escanéalo en la estación para liberar tu bicicleta</p>
           </div>
+          
 
           <div class="complete-actions">
             <button class="btn-secondary">

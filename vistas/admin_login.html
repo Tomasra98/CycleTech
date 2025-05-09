@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso Administradores - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+</head>
+<body>
+  <main class="login-container">
+    <div class="login-form-container">
+      <div class="form-header">
+        <h1>Acceso Administradores</h1>
+        <p>Ingresa tus credenciales de administrador</p>
+      </div>
+      
+      <form class="login-form" id="admin-login-form">
+        <div class="input-group">
+          <label for="admin-username">Usuario</label>
+          <input type="text" id="admin-username" required placeholder="Ej: admin">
+        </div>
+
+        <div class="input-group">
+          <label for="admin-password">Contraseña</label>
+          <div class="input-with-icon">
+            <input type="password" id="admin-password" required placeholder="••••••••">
+            <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login">
+          <i class="fas fa-sign-in-alt"></i> Ingresar
+        </button>
+
+        <div class="register-link">
+          <a href="login.html">Volver a inicio de sesión de usuarios</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="../js/admin_login.js"></script>
+</body>
+</html>
