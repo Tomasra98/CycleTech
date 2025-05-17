@@ -149,12 +149,12 @@
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .stations-map-container {
   flex: 1;
   min-width: 300px;
-  height: 600px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--sombra-suave);

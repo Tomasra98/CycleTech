@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Elementos del DOM
   const zoneFilter = document.getElementById('zone-filter');
   const statusFilter = document.getElementById('status-filter');
-  const typeFilter = document.getElementById('type-filter');
+  //const typeFilter = document.getElementById('type-filter');
   const sortStations = document.getElementById('sort-stations');
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-btn');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       // Crear tarjeta
       const stationCard = document.createElement('div');
       stationCard.className = 'station-card'; // Solo la clase base      stationCard.dataset.zone = station.zone;
-      stationCard.dataset.type = station.type;
+      //stationCard.dataset.type = station.type;
       stationCard.dataset.status = station.status;
       stationCard.dataset.name = station.name.toLowerCase();
   
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   function applyFilters() {
     const zoneValue = zoneFilter.value;
     const statusValue = statusFilter.value;
-    const typeValue = typeFilter.value;
+    //const typeValue = typeFilter.value;
     const searchValue = searchInput.value.toLowerCase();
   
     currentStations = stations.filter(station => {
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       if (zoneValue !== 'all' && station.zone !== zoneValue) return false;
       
       // Filtro por tipo
-      if (typeValue !== 'all' && station.type !== typeValue) return false;
+      //if (typeValue !== 'all' && station.type !== typeValue) return false;
       
       // Filtro por estado (usando disponibilidad real)
       if (statusValue !== 'all') {
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Event listeners
   zoneFilter.addEventListener('change', applyFilters);
   statusFilter.addEventListener('change', applyFilters);
-  typeFilter.addEventListener('change', applyFilters);
+  //typeFilter.addEventListener('change', applyFilters);
   sortStations.addEventListener('change', sortStationsList);
   searchBtn.addEventListener('click', applyFilters);
   searchInput.addEventListener('keypress', function(e) {
