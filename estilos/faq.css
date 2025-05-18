@@ -309,6 +309,10 @@
   font-weight: 500;
 }
 
+.contact-btn i {
+  color: white;
+}
+
 .contact-btn:hover {
   background-color: var(--verde-oscuro);
 }
