@@ -203,6 +203,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             alert(`No se pudo obtener la ubicación de ${stationName}`);
         }
     });
+  document.getElementById('btn-start-sim').addEventListener('click', iniciarSimulacion);
+  document.getElementById('btn-stop-sim').addEventListener('click', detenerSimulacion);
 });
   }
 
@@ -224,6 +226,75 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   // Hacer función accesible para los popups
   window.redirectToReservation = function(stationName) {
-    window.location.href = `reservar.html?estacion=${encodeURIComponent(stationName)}`;
+  window.location.href = `reservar.html?estacion=${encodeURIComponent(stationName)}`;
   };
+
+
+// ----- Simulación -----
+let intervalo = null;
+let tiempoGlobal = 0;
+let contadorReservas = 0;
+
+function iniciarSimulacion() {
+  if (!intervalo) {
+    intervalo = setInterval(() => {
+      tiempoGlobal++;
+      simularEvento();
+      procesarReservas();
+      renderStations(currentStations); // actualiza tarjetas y mapa
+    }, 1000);
+  }
+}
+
+function detenerSimulacion() {
+  clearInterval(intervalo);
+  intervalo = null;
+}
+
+function simularEvento() {
+  const est = stations[Math.floor(Math.random() * stations.length)];
+  const puedeRetirar = est.bikes > est.reservas.length;
+  const puedeAnclar = est.anchorages > 0;
+  const accion = Math.random() < 0.1 ? 'omitir'
+               : Math.random() < 0.4 ? 'retirar'
+               : Math.random() < 0.7 ? 'anclar'
+               : 'reservar';
+
+  if (accion === 'retirar' && puedeRetirar) {
+    est.bikes--;
+    est.anchorages++;
+    log(`[${tiempoGlobal}s] 🚲 Retiro en ${est.name}`);
+  } else if (accion === 'anclar' && puedeAnclar) {
+    est.bikes++;
+    est.anchorages--;
+    log(`[${tiempoGlobal}s] 🔒 Anclaje en ${est.name}`);
+  } else if (accion === 'reservar' && puedeRetirar) {
+    contadorReservas++;
+    est.reservas.push({ id: contadorReservas, tiempo: tiempoGlobal });
+    log(`[${tiempoGlobal}s] 🕜 Reserva en ${est.name} (ID ${contadorReservas})`);
+  }
+}
+
+function procesarReservas() {
+  stations.forEach(est => {
+    est.reservas = est.reservas.filter(res => {
+      if (tiempoGlobal - res.tiempo >= 5) {
+        const seRetira = Math.random() < 0.7;
+        if (seRetira) {
+          est.bikes--;
+          est.anchorages++;
+          log(`[${tiempoGlobal}s] ✅ Retiro reservado en ${est.name} (ID ${res.id})`);
+        } else {
+          log(`[${tiempoGlobal}s] ❌ Reserva no retirada en ${est.name} (ID ${res.id})`);
+        }
+        return false;
+      }
+      return true;
+    });
+  });
+}
+
+function log(mensaje) {
+  console.log(mensaje);
+}
 });
