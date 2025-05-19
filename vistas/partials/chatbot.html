@@ -1,40 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- Incluye Font Awesome para los iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../estilos/chatbot.css">
-</head>
-<body>
-  <!-- Contenido principal de tu página -->
-  <h1>Mi Página</h1>
-  <p>Contenido de la página...</p>
-
-  <!-- Chatbot Container -->
-  <div class="chatbot-container" id="chatbotContainer">
-    <!-- Botón flotante del chatbot -->
-    <div class="chatbot-icon" onclick="toggleChatbot()">
-      <div class="chatbot-pulse">
-        <i class="fas fa-comment-dots"></i>
-      </div>
-      <span class="chatbot-tooltip">¿Necesitas ayuda?</span>
+<!-- chatbot.html -->
+<div class="chatbot-container" id="chatbotContainer">
+  <!-- Botón flotante del chatbot -->
+  <div class="chatbot-icon" onclick="toggleChatbot()">
+    <div class="chatbot-pulse">
+      <i class="fas fa-comment-dots"></i>
     </div>
-    
-    <!-- Ventana de chat -->
-    <div class="chatbot-box hidden" id="chatbotBox">
-      <div class="chatbot-header">
-        <h4><i class="fas fa-robot"></i> Asistente CycleTech</h4>
-        <button onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="chatbot-body">
-        <div class="chatbot-messages" id="chatMessages">
-          <div class="chatbot-message bot">
-            <p>¡Hola! Soy tu asistente de CycleTech. ¿En qué puedo ayudarte hoy?</p>
-          </div>
+    <span class="chatbot-tooltip">¿Necesitas ayuda?</span>
+  </div>
+
+  <!-- Ventana de chat -->
+  <div class="chatbot-box hidden" id="chatbotBox">
+    <div class="chatbot-header">
+      <h4><i class="fas fa-robot"></i> Asistente CycleTech</h4>
+      <button onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-messages" id="chatMessages">
+        <div class="chatbot-message bot">
+          <p>¡Hola! Soy tu asistente de CycleTech. ¿En qué puedo ayudarte hoy?</p>
         </div>
+      </div>
+      <div class="chatbot-options-container" id="optionsContainer">
         <div class="chatbot-options" id="quickQuestions">
           <button class="chatbot-option" data-question="gamificacion">
             <i class="fas fa-gamepad"></i> ¿Qué es la gamificación?
@@ -42,23 +28,20 @@
           <button class="chatbot-option" data-question="disponibilidad">
             <i class="fas fa-bicycle"></i> ¿Cómo ver bicicletas disponibles?
           </button>
-          <button class="chatbot-option" data-question="turistas">
+          <button class="chatbot-option hidden-option" data-question="turistas">
             <i class="fas fa-user-clock"></i> ¿Pueden usar turistas?
           </button>
-          <button class="chatbot-option" data-question="registro">
+          <button class="chatbot-option hidden-option" data-question="registro">
             <i class="fas fa-user-plus"></i> ¿Qué necesito para registrarme?
           </button>
         </div>
-        <div class="chatbot-footer">
-          <button class="btn-human-support" onclick="connectToHuman()">
-            <i class="fas fa-headset"></i> Hablar con un agente
-          </button>
-        </div>
+      </div>
+      <button class="show-more-btn" id="showMoreBtn" onclick="toggleMoreOptions()">Mostrar más ▼</button>
+      <div class="chatbot-footer">
+        <button class="btn-human-support" onclick="connectToAI()">
+          <i class="fas fa-robot"></i> Hablar con asistente IA
+        </button>
       </div>
     </div>
   </div>
-
-  <!-- Scripts al final del body -->
-  <script src="../js/chatbot.js"></script>
-</body>
-</html>
+</div>

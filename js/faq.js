@@ -100,13 +100,23 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   });
   
-  // Botones de contacto
+  // Botones de contacto - MODIFICADO PARA ABRIR CHATBOT
   const chatBtn = document.querySelector('.contact-btn:nth-of-type(1)');
   const emailBtn = document.querySelector('.contact-btn:nth-of-type(2)');
   
   if (chatBtn) {
-      chatBtn.addEventListener('click', function() {
-          alert('El chat de soporte se abrirá en una nueva ventana.');
+      chatBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Abrir el chatbot directamente
+          const chatbotBox = document.getElementById('chatbotBox');
+          if (chatbotBox) {
+              chatbotBox.classList.add('active');
+              chatbotBox.style.display = 'flex';
+              setTimeout(() => {
+                  chatbotBox.style.opacity = '1';
+                  chatbotBox.style.transform = 'translateY(0)';
+              }, 10);
+          }
       });
   }
   
