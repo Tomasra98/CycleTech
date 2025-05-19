@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Recompensas - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/admin_recompensas.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1><i class="fas fa-cog"></i> Panel de Recompensas</h1>
+    <button id="logout-admin" class="btn-logout">
+      <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+    </button>
+  </header>
+
+  <main class="admin-container">
+    <section class="recompensas-section">
+      <h2><i class="fas fa-gift"></i> Gestión de Recompensas</h2>
+      
+      <div class="admin-controls">
+        <button id="add-recompensa" class="btn-add">
+          <i class="fas fa-plus"></i> Añadir Recompensa
+        </button>
+      </div>
+    
+      <div class="recompensas-grid" id="recompensas-container">
+        <!-- Las recompensas se cargarán dinámicamente aquí -->
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/admin_recompensas.js"></script>
+  
+  <!-- Script adicional para asegurar el funcionamiento -->
+  <script>
+    // Verificar si el script principal se cargó correctamente
+    setTimeout(() => {
+      if (typeof loadRecompensas !== 'function') {
+        console.error('El archivo admin_recompensas.js no se cargó correctamente');
+        alert('Error al cargar las funcionalidades. Por favor recarga la página.');
+      }
+    }, 500);
+  </script>
+</body>
+</html>
