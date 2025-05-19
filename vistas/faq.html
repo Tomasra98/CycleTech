@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Preguntas Frecuentes - CycleTech</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../estilos/principal.css">
-  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/chatbot.css">
   <link rel="stylesheet" href="../estilos/faq.css">
   <link rel="stylesheet" href="../estilos/estaciones.css">
   <link rel="stylesheet" href="../estilos/incumplimientos.css">
@@ -184,32 +183,191 @@
     </div>
   </main>
 
-  <div id="chatbot-container">
-    <!-- El contenido se cargará dinámicamente -->
-  </div>
+  <!-- Chatbot Container - Versión integrada directamente -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <!-- Botón flotante del chatbot -->
+    <div class="chatbot-icon" onclick="toggleChatbot()">
+      <div class="chatbot-pulse">
+        <i class="fas fa-comment-dots"></i>
+      </div>
+      <span class="chatbot-tooltip">¿Necesitas ayuda?</span>
+    </div>
     
+    <!-- Ventana de chat -->
+    <div class="chatbot-box hidden" id="chatbotBox">
+      <div class="chatbot-header">
+        <h4><i class="fas fa-robot"></i> Asistente CycleTech</h4>
+        <button onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="chatbot-body">
+        <div class="chatbot-messages" id="chatMessages">
+          <div class="chatbot-message bot">
+            <p>¡Hola! Soy tu asistente de CycleTech. ¿En qué puedo ayudarte hoy?</p>
+          </div>
+        </div>
+        <div class="chatbot-options" id="quickQuestions">
+          <button class="chatbot-option" data-question="gamificacion">
+            <i class="fas fa-gamepad"></i> ¿Qué es la gamificación?
+          </button>
+          <button class="chatbot-option" data-question="disponibilidad">
+            <i class="fas fa-bicycle"></i> ¿Cómo ver bicicletas disponibles?
+          </button>
+          <button class="chatbot-option" data-question="turistas">
+            <i class="fas fa-user-clock"></i> ¿Pueden usar turistas?
+          </button>
+          <button class="chatbot-option" data-question="registro">
+            <i class="fas fa-user-plus"></i> ¿Qué necesito para registrarme?
+          </button>
+        </div>
+        <div class="chatbot-footer">
+          <button class="btn-human-support" onclick="connectToHuman()">
+            <i class="fas fa-headset"></i> Hablar con un agente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
   <script src="../js/faq.js"></script>
+  <script src="../js/loadFooter.js"></script>
+  
+  <!-- Chatbot JS integrado -->
   <script>
-    // Carga diferida del chatbot
-    window.addEventListener('DOMContentLoaded', function() {
-      fetch("../chatbot/chatbot.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("chatbot-container").innerHTML = data;
-          const script = document.createElement('script');
-          script.src = "../chatbot/chatbot.js";
-          document.body.appendChild(script);
+  // Solo define las funciones si no existen previamente
+  if (typeof toggleChatbot === 'undefined') {
+    // Respuestas del chatbot
+    const chatbotResponses = {
+      gamificacion: "La gamificación en CycleTech significa que incorporamos elementos de juego como puntos, niveles o premios por buen comportamiento: usar frecuentemente el sistema, devolver a tiempo, o estacionar en zonas estratégicas.",
+      disponibilidad: "Puedes ver en tiempo real la disponibilidad de bicicletas y estaciones cercanas desde el portal web en la sección 'Estaciones'.",
+      turistas: "¡Sí! Hay una opción para usuarios temporales mediante verificación rápida, ideal para turistas o asistentes a eventos.",
+      registro: "Necesitas: 1) Correo electrónico, 2) Documento de identidad, 3) Aceptar los términos del servicio. También puedes iniciar sesión con cuentas como Google.",
+      problemas: "Para problemas técnicos: 1) Reporta en la sección 'Ayuda' de la web, 2) Llama al 01 8000 123456, 3) Escribe a soporte@cycletech.com",
+      costo: "El sistema es completamente gratuito para los usuarios registrados.",
+      devolucion: "Si no devuelves la bicicleta a tiempo podrías recibir una sanción o suspensión temporal del servicio."
+    };
+
+    // Función para mostrar/ocultar el chatbot
+    function toggleChatbot() {
+      const chatbotBox = document.getElementById('chatbotBox');
+      chatbotBox.classList.toggle('active');
+      
+      if (chatbotBox.classList.contains('active')) {
+        chatbotBox.style.display = 'flex';
+        setTimeout(() => {
+          chatbotBox.style.opacity = '1';
+          chatbotBox.style.transform = 'translateY(0)';
+        }, 10);
+      } else {
+        chatbotBox.style.opacity = '0';
+        chatbotBox.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          chatbotBox.style.display = 'none';
+        }, 300);
+      }
+    }
+
+    // Conectar con agente humano
+    function connectToHuman() {
+      addBotMessage("Estoy conectándote con un agente humano. Por favor espera...");
+      
+      setTimeout(() => {
+        addBotMessage("Todos nuestros agentes están ocupados. Por favor intenta más tarde o escribe tu consulta y te responderemos por correo.");
+        showCustomInput();
+      }, 2000);
+    }
+
+    // Mostrar input para preguntas personalizadas
+    function showCustomInput() {
+      document.getElementById('quickQuestions').style.display = 'none';
+      
+      const inputContainer = document.createElement('div');
+      inputContainer.className = 'chatbot-input-container visible';
+      inputContainer.innerHTML = `
+        <input type="text" class="chatbot-input" placeholder="Escribe tu pregunta..." id="userQuestion">
+        <button class="btn-send" onclick="sendCustomQuestion()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      `;
+      
+      document.querySelector('.chatbot-body').insertBefore(inputContainer, document.querySelector('.chatbot-footer'));
+    }
+
+    // Enviar pregunta personalizada
+    function sendCustomQuestion() {
+      const input = document.getElementById('userQuestion');
+      if (input.value.trim() === '') return;
+      
+      addUserMessage(input.value);
+      input.value = '';
+      
+      setTimeout(() => {
+        addBotMessage("Hemos registrado tu pregunta. Un agente te responderá a tu correo en las próximas 24 horas.");
+      }, 1000);
+    }
+
+    // Añadir mensaje del usuario
+    function addUserMessage(text) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const message = document.createElement('div');
+      message.className = 'chatbot-message user';
+      message.innerHTML = `<p>${text}</p>`;
+      messagesContainer.appendChild(message);
+      scrollToBottom();
+    }
+
+    // Añadir mensaje del bot
+    function addBotMessage(text) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const message = document.createElement('div');
+      message.className = 'chatbot-message bot';
+      message.innerHTML = `<p>${text}</p>`;
+      messagesContainer.appendChild(message);
+      scrollToBottom();
+    }
+
+    // Scroll al final del chat
+    function scrollToBottom() {
+      const messagesContainer = document.getElementById('chatMessages');
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Inicialización del chatbot
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configurar eventos de las opciones rápidas
+      document.querySelectorAll('.chatbot-option').forEach(option => {
+        option.addEventListener('click', function() {
+          const questionType = this.dataset.question;
+          const response = chatbotResponses[questionType];
+          
+          addUserMessage(this.textContent.trim());
+          setTimeout(() => {
+            addBotMessage(response);
+          }, 500);
         });
+      });
+      
+      // Cerrar al hacer clic fuera
+      document.addEventListener('click', function(e) {
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const chatbotBox = document.getElementById('chatbotBox');
+        
+        if (!chatbotContainer.contains(e.target) && chatbotBox.classList.contains('active')) {
+          toggleChatbot();
+        }
+      });
     });
+  }
   </script>
+</body>
+</html>
 
- <!-- Contenedor del footer -->
- <div id="footer-container"></div>
-
- <!-- Cargar Font Awesome (si no lo tienes) -->
- <script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
  
  <!-- Cargar el script que inserta el footer -->
  <script src="../js/loadFooter.js"></script>
+<script src="../chatbot/chatbot.js"></script>
 </body>
 </html>

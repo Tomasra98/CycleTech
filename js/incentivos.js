@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
         icon.style.transform = 'scale(1) rotate(0)';
       });
     });
-  
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const incentivos = JSON.parse(localStorage.getItem('incentivos')) || [
+        { accion: "Reservar y reclamar a tiempo", puntos: "+10" },
+        { accion: "Devolución tardía", puntos: "-10" }
+      ];
+    
+    });    
     console.log('Vista informativa de incentivos cargada');
   });
