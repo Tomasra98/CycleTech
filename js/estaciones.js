@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Elementos del DOM
   const zoneFilter = document.getElementById('zone-filter');
   const statusFilter = document.getElementById('status-filter');
-  const typeFilter = document.getElementById('type-filter');
+  //const typeFilter = document.getElementById('type-filter');
   const sortStations = document.getElementById('sort-stations');
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-btn');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       // Crear tarjeta
       const stationCard = document.createElement('div');
       stationCard.className = 'station-card'; // Solo la clase base      stationCard.dataset.zone = station.zone;
-      stationCard.dataset.type = station.type;
+      //stationCard.dataset.type = station.type;
       stationCard.dataset.status = station.status;
       stationCard.dataset.name = station.name.toLowerCase();
   
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   function applyFilters() {
     const zoneValue = zoneFilter.value;
     const statusValue = statusFilter.value;
-    const typeValue = typeFilter.value;
+    //const typeValue = typeFilter.value;
     const searchValue = searchInput.value.toLowerCase();
   
     currentStations = stations.filter(station => {
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       if (zoneValue !== 'all' && station.zone !== zoneValue) return false;
       
       // Filtro por tipo
-      if (typeValue !== 'all' && station.type !== typeValue) return false;
+      //if (typeValue !== 'all' && station.type !== typeValue) return false;
       
       // Filtro por estado (usando disponibilidad real)
       if (statusValue !== 'all') {
@@ -193,16 +193,25 @@ document.addEventListener('DOMContentLoaded', async function() {
       btn.addEventListener('click', function() {
         if (this.classList.contains('disabled')) return;
         
-        const stationName = this.closest('.station-card').querySelector('h4').textContent;
-        alert(`Abriendo mapa para llegar a ${stationName}`);
-      });
+        const stationCard = this.closest('.station-card');
+        const stationName = stationCard.querySelector('h4').textContent;
+        // Encontrar la estación en el array original
+        const station = stations.find(s => s.name === stationName);
+        if (station && station.position) {
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${station.position[0]},${station.position[1]}`);
+        } else {
+            alert(`No se pudo obtener la ubicación de ${stationName}`);
+        }
     });
+  document.getElementById('btn-start-sim').addEventListener('click', iniciarSimulacion);
+  document.getElementById('btn-stop-sim').addEventListener('click', detenerSimulacion);
+});
   }
 
   // Event listeners
   zoneFilter.addEventListener('change', applyFilters);
   statusFilter.addEventListener('change', applyFilters);
-  typeFilter.addEventListener('change', applyFilters);
+  //typeFilter.addEventListener('change', applyFilters);
   sortStations.addEventListener('change', sortStationsList);
   searchBtn.addEventListener('click', applyFilters);
   searchInput.addEventListener('keypress', function(e) {
@@ -217,6 +226,75 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   // Hacer función accesible para los popups
   window.redirectToReservation = function(stationName) {
-    window.location.href = `reservar.html?estacion=${encodeURIComponent(stationName)}`;
+  window.location.href = `reservar.html?estacion=${encodeURIComponent(stationName)}`;
   };
+
+
+// ----- Simulación -----
+let intervalo = null;
+let tiempoGlobal = 0;
+let contadorReservas = 0;
+
+function iniciarSimulacion() {
+  if (!intervalo) {
+    intervalo = setInterval(() => {
+      tiempoGlobal++;
+      simularEvento();
+      procesarReservas();
+      renderStations(currentStations); // actualiza tarjetas y mapa
+    }, 1000);
+  }
+}
+
+function detenerSimulacion() {
+  clearInterval(intervalo);
+  intervalo = null;
+}
+
+function simularEvento() {
+  const est = stations[Math.floor(Math.random() * stations.length)];
+  const puedeRetirar = est.bikes > est.reservas.length;
+  const puedeAnclar = est.anchorages > 0;
+  const accion = Math.random() < 0.1 ? 'omitir'
+               : Math.random() < 0.4 ? 'retirar'
+               : Math.random() < 0.7 ? 'anclar'
+               : 'reservar';
+
+  if (accion === 'retirar' && puedeRetirar) {
+    est.bikes--;
+    est.anchorages++;
+    log(`[${tiempoGlobal}s] 🚲 Retiro en ${est.name}`);
+  } else if (accion === 'anclar' && puedeAnclar) {
+    est.bikes++;
+    est.anchorages--;
+    log(`[${tiempoGlobal}s] 🔒 Anclaje en ${est.name}`);
+  } else if (accion === 'reservar' && puedeRetirar) {
+    contadorReservas++;
+    est.reservas.push({ id: contadorReservas, tiempo: tiempoGlobal });
+    log(`[${tiempoGlobal}s] 🕜 Reserva en ${est.name} (ID ${contadorReservas})`);
+  }
+}
+
+function procesarReservas() {
+  stations.forEach(est => {
+    est.reservas = est.reservas.filter(res => {
+      if (tiempoGlobal - res.tiempo >= 5) {
+        const seRetira = Math.random() < 0.7;
+        if (seRetira) {
+          est.bikes--;
+          est.anchorages++;
+          log(`[${tiempoGlobal}s] ✅ Retiro reservado en ${est.name} (ID ${res.id})`);
+        } else {
+          log(`[${tiempoGlobal}s] ❌ Reserva no retirada en ${est.name} (ID ${res.id})`);
+        }
+        return false;
+      }
+      return true;
+    });
+  });
+}
+
+function log(mensaje) {
+  console.log(mensaje);
+}
 });

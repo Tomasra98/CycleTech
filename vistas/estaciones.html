@@ -37,8 +37,8 @@
       <nav class="nav-elegante">
         <ul class="menu-delgado">
           <li><a href="index.html">Inicio</a></li>
-          <li><a href="reservar.html" class="active-menu">Reservar</a></li>
-          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="reservar.html">Reservar</a></li>
+          <li><a href="estaciones.html" class="active-menu">Estaciones</a></li>
           <li><a href="incentivos.html">Incentivos</a></li>
           <li><a href="faq.html">Preguntas Frecuentes</a></li>
           <li class="dropdown">
@@ -137,7 +137,7 @@
           <option value="both">Con ambos disponibles</option>
         </select>
       </div>
-      
+      <!--
       <div class="filter-group">
         <label for="type-filter"><i class="fas fa-terminal"></i> Tipo:</label>
         <select id="type-filter">
@@ -145,7 +145,7 @@
           <option value="automatic">Automáticas</option>
           <option value="manual">Manuales</option>
         </select>
-      </div>
+      </div>-->
     </div>
 
     <div class="stations-display">
@@ -188,6 +188,11 @@
         </div>
       </div>
     </div>
+    <div style="text-align: center; margin: 20px;">
+      <button id="btn-start-sim">Iniciar Simulación</button>
+      <button id="btn-stop-sim">Detener Simulación</button>
+   </div>
+
   </main>
 
   <div id="chatbot-container" class="chatbot-premium">

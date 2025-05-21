@@ -149,12 +149,12 @@
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .stations-map-container {
   flex: 1;
   min-width: 300px;
-  height: 600px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--sombra-suave);
@@ -343,12 +343,12 @@
 }
 
 .btn-reserve {
-  background-color: var(--azul-oscuro);
+  background-color: var(--complementario-a-azul-oscuro);
   color: white;
 }
 
 .btn-reserve:hover {
-  background-color: var(--verde-oscuro);
+  background-color: var(--complementario-a-verde-oscuro);
 }
 
 .btn-directions {
