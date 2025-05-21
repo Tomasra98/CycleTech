@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulación de Bicicletas</title>
+</head>
+<body>
+  <h1>Simulación de Estaciones de Bicicletas</h1>
+  <button onclick="iniciarSimulacion()">Iniciar Simulación</button>
+  <button onclick="detenerSimulacion()">Detener Simulación</button>
+  <pre id="output"></pre>
+
+  <script type="module">
+    import estacionesData from '../data/estaciones.json' with { type: 'json' };
+
+    // Dentro del script module
+    window.iniciarSimulacion = iniciarSimulacion;
+    window.detenerSimulacion = detenerSimulacion;
+
+
+    let estaciones = estacionesData.map(est => ({
+      ...est,
+      totalAnclajes: est.bikes + est.anchorages
+    }));
+
+    let intervalo = null;
+    let contadorReservas = 0;
+    let tiempoGlobal = 0;
+
+    function simularEvento() {
+      const estacion = estaciones[Math.floor(Math.random() * estaciones.length)];
+
+      const puedeRetirar = estacion.bikes > estacion.reservas.length;
+      const puedeAnclar = estacion.anchorages > 0;
+      const number = Math.random();
+      const accion = number < .1 ? 'omitir' : number < 0.4 ? 'retirar' : number < 0.7 ? 'anclar': 'reservar';
+
+
+      if (accion === 'omitir') {
+        ;
+      }  else if (accion === 'retirar' && puedeRetirar) {
+        estacion.bikes--;
+        estacion.anchorages++;
+        logEvento(`🚲 Retiro en "${estacion.name}"`);
+      } else if (accion === 'anclar' && puedeAnclar) {
+        estacion.bikes++;
+        estacion.anchorages--;
+        logEvento(`🔒 Anclaje en "${estacion.name}"`);
+      } else if (accion === 'reservar' && puedeRetirar) {
+        contadorReservas++;
+        estacion.reservas.push({ id: contadorReservas, tiempo: tiempoGlobal });
+        logEvento(`🕜 Reserva creada en "${estacion.name}"(ID ${contadorReservas})`);
+      } else {
+        logEvento(`❌ No se pudo ${accion} en "${estacion.name}"`);
+      }
+    }
+
+    function iniciarSimulacion() {
+      if (!intervalo) {
+        intervalo = setInterval(() => {
+          tiempoGlobal++;
+          simularEvento();
+          procesarReservas();
+          mostrarEstado();
+        }, 1000);
+      }
+    }
+
+    function detenerSimulacion() {
+      clearInterval(intervalo);
+      intervalo = null;
+    }
+
+    function procesarReservas() {
+      estaciones.forEach(est => {
+        est.reservas = est.reservas.filter(reserva => {
+          if (tiempoGlobal - reserva.tiempo >= 5) {
+            const seRetira = Math.random() < 0.7;
+            
+            if (seRetira) {
+              est.bikes--;
+              est.anchorages++;
+              logEvento(`✅ Retiro en "${est.name}" de bicicleta reservada (ID ${reserva.id})`);
+            } else {
+              logEvento(`❌ Bicilceta reservada no retirada en "${est.name}"(ID ${reserva.id})`);
+            }
+
+            return false; // Eliminar la reserva
+          }
+          return true; // Mantener la reserva
+        });
+      });
+    }
+
+    function mostrarEstado() {
+      const output = estaciones.map(est => {
+        return `${est.name}: 🚲 ${est.bikes} | ⛓️ ${est.anchorages} / ${est.totalAnclajes} | 🔒 Reservas: ${est.reservas.length}`;
+      }).join('\n');
+      document.getElementById('output').textContent = output;
+    }
+
+    function logEvento(texto) {
+      console.log(`[${tiempoGlobal}s] ${texto}`);
+    }
+
+    document.addEventListener('DOMContentLoaded', mostrarEstado);
+  </script>
+</body>
+</html>

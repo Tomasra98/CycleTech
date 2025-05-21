@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cambiar contraseña
   if (changePasswordBtn) {
     changePasswordBtn.addEventListener('click', function() {
-      window.location.href = 'cambiar-contrasena.html';
+      window.location.href = 'recuperar_contraseña.html';
     });
   }
 
