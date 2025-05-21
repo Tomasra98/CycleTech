@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Cerrar sesión
+  /*
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function() {
       if (confirm('¿Está seguro que desea cerrar sesión?')) {
@@ -75,4 +76,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+  */
+  // cerrar session nehir 
+  logoutBtn.addEventListener('click', function () {
+  if (confirm('¿Está seguro que desea cerrar sesión?')) {
+    // Elimina datos del usuario (ajusta según lo que uses)
+    localStorage.removeItem('usuario'); // o sessionStorage.removeItem('usuario');
+
+    // (opcional) Eliminar todo
+    // localStorage.clear();
+
+    // Redirige al inicio
+    window.location.href = 'index.html';
+  }
+});
+
 });
