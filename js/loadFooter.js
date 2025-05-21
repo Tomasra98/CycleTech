@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const footerContainer = document.getElementById('footer-container');
     
     if (footerContainer) {
-      fetch('../vistas/footer.html')
+      fetch('../vistas/partials/footer.html')
         .then(response => {
           if (!response.ok) {
             throw new Error('No se pudo cargar el footer');
