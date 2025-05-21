@@ -139,6 +139,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Generar código QR
             generateQRCode(generatedCode);
+            
+            // Generar una notificación de reserva y programar la de vencimiento
+            createReservationNotification(stationData.name, bikeCode, selectedTime);
+            
+            // Añadir botón para simular reserva vencida (solo para demo)
+            agregarBotonSimulacion(stationData.name, bikeCode);
         });
 
         document.getElementById('view-directions').addEventListener('click', function() {
@@ -185,6 +191,178 @@ document.addEventListener('DOMContentLoaded', function() {
                 canvas.appendChild(canvasEl);
             }
         });
+    }
+    
+    // NUEVA FUNCIÓN: Crear notificación de reserva
+    function createReservationNotification(stationName, bikeCode, reservationTime) {
+        // Formato para la hora actual
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const timeStr = `${hours}:${minutes}`;
+        
+        // Formato para la fecha de la notificación
+        const today = now.toLocaleDateString('es-CO', { weekday: 'long' });
+        const fechaNotificacion = `Hoy - ${timeStr}`;
+        
+        // Formato para la hora de reserva
+        const reservationHour = reservationTime.getHours().toString().padStart(2, '0');
+        const reservationMinute = reservationTime.getMinutes().toString().padStart(2, '0');
+        const reservationTimeStr = `${reservationHour}:${reservationMinute}`;
+        
+        // Crear objeto de notificación
+        const nuevaNotificacion = {
+            id: Date.now(), // ID único basado en timestamp
+            icono: '📅',
+            titulo: 'Reserva confirmada',
+            descripcion: `Tu bicicleta ${bikeCode} ha sido reservada en ${stationName} para hoy a las ${reservationTimeStr}. Código: ${generatedCode}`,
+            fecha: fechaNotificacion,
+            leida: false
+        };
+        
+        // Guardar la notificación en localStorage para que esté disponible en la página de notificaciones
+        let notificacionesGuardadas = JSON.parse(localStorage.getItem('notificaciones') || '[]');
+        notificacionesGuardadas.unshift(nuevaNotificacion); // Añadir al principio del array
+        localStorage.setItem('notificaciones', JSON.stringify(notificacionesGuardadas));
+        
+        // Actualizar el contador de notificaciones en el icono de campana
+        const notificationBadge = document.querySelector('.notification-badge');
+        if (notificationBadge) {
+            const contadorActual = parseInt(notificationBadge.textContent.replace('+', '')) || 0;
+            notificationBadge.textContent = `+${contadorActual + 1}`;
+            notificationBadge.style.display = 'flex'; // Asegurarse de que sea visible
+        }
+        
+        // Mostrar un feedback visual temporal
+        mostrarFeedbackNotificacion('¡Reserva confirmada! Se ha añadido una notificación');
+        
+        // Programar notificación de reserva vencida después de 15 minutos
+        scheduleExpiredReservationNotification(stationName, bikeCode, reservationTime);
+    }
+    
+    // NUEVA FUNCIÓN: Programar notificación de reserva vencida
+    function scheduleExpiredReservationNotification(stationName, bikeCode, reservationTime) {
+        // Guardar datos de la reserva en el localStorage para poder acceder después
+        const reservationData = {
+            stationName: stationName,
+            bikeCode: bikeCode,
+            reservationTime: reservationTime.getTime(),
+            code: generatedCode
+        };
+        
+        localStorage.setItem('currentReservation', JSON.stringify(reservationData));
+        
+        // Calcular tiempo hasta el vencimiento (15 minutos = 900000 milisegundos)
+        const expirationDelay = 5 * 1000; // 15 minutos
+        
+        // Para fines de demostración/prueba, puedes usar un tiempo más corto como 15 segundos
+        // const expirationDelay = 15 * 1000; // 15 segundos (solo para pruebas)
+        
+        // Guardar el ID del timeout para poder cancelarlo si es necesario
+        const timeoutId = setTimeout(() => {
+            createExpiredReservationNotification(stationName, bikeCode);
+        }, expirationDelay);
+        
+        // Guardar el ID del timeout en sessionStorage para poder cancelarlo si es necesario
+        sessionStorage.setItem('reservationTimeoutId', timeoutId);
+    }
+    
+    // NUEVA FUNCIÓN: Crear notificación de reserva vencida
+    function createExpiredReservationNotification(stationName, bikeCode) {
+        // Formato para la hora actual
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const timeStr = `${hours}:${minutes}`;
+        
+        // Formato para la fecha de la notificación
+        const fechaNotificacion = `Hoy - ${timeStr}`;
+        
+        // Crear objeto de notificación de reserva vencida
+        const notificacionVencida = {
+            id: Date.now(), // ID único basado en timestamp
+            icono: '⏰',
+            titulo: 'Reserva vencida',
+            descripcion: `Tu reserva de la bicicleta ${bikeCode} en ${stationName} ha expirado por falta de retiro. La bicicleta ha sido liberada para otros usuarios.`,
+            fecha: fechaNotificacion,
+            leida: false
+        };
+        
+        // Guardar la notificación en localStorage
+        let notificacionesGuardadas = JSON.parse(localStorage.getItem('notificaciones') || '[]');
+        notificacionesGuardadas.unshift(notificacionVencida); // Añadir al principio del array
+        localStorage.setItem('notificaciones', JSON.stringify(notificacionesGuardadas));
+        
+        // Actualizar el contador de notificaciones en el icono de campana
+        const notificationBadge = document.querySelector('.notification-badge');
+        if (notificationBadge) {
+            const contadorActual = parseInt(notificationBadge.textContent.replace('+', '')) || 0;
+            notificationBadge.textContent = `+${contadorActual + 1}`;
+            notificationBadge.style.display = 'flex'; // Asegurarse de que sea visible
+        }
+        
+        // Mostrar un feedback visual temporal
+        mostrarFeedbackNotificacion('Tu reserva ha expirado. Se ha liberado la bicicleta.');
+        
+        // Eliminar datos de la reserva actual
+        localStorage.removeItem('currentReservation');
+    }
+    
+    // Función auxiliar para mostrar feedback visual de la notificación
+    function mostrarFeedbackNotificacion(mensaje) {
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback-notificacion';
+        feedback.innerHTML = `
+            <i class="fas fa-bell"></i>
+            <span>${mensaje}</span>
+        `;
+        document.body.appendChild(feedback);
+        
+        setTimeout(() => {
+            feedback.classList.add('mostrar');
+        }, 10);
+        
+        setTimeout(() => {
+            feedback.classList.remove('mostrar');
+            setTimeout(() => {
+                feedback.remove();
+            }, 300);
+        }, 3000);
+    }
+    
+    // NUEVA FUNCIÓN: Agregar botón para simular reserva vencida (para demostración)
+    function agregarBotonSimulacion(stationName, bikeCode) {
+        // Verificar si ya existe el botón de simulación
+        if (document.getElementById('simulate-expired')) {
+            return;
+        }
+        
+        // Crear botón de simulación
+        const btnSimular = document.createElement('button');
+        btnSimular.id = 'simulate-expired';
+        btnSimular.className = 'btn-secondary';
+        btnSimular.innerHTML = '<i class="fas fa-clock"></i> Simular reserva vencida';
+        btnSimular.style.marginTop = '20px';
+        
+        // Agregar evento al botón
+        btnSimular.addEventListener('click', function() {
+            // Cancelar el temporizador existente
+            const timeoutId = sessionStorage.getItem('reservationTimeoutId');
+            if (timeoutId) {
+                clearTimeout(parseInt(timeoutId));
+            }
+            
+            // Crear inmediatamente la notificación de reserva vencida
+            createExpiredReservationNotification(stationName, bikeCode);
+            
+            // Desactivar el botón
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-check"></i> Simulación completada';
+        });
+        
+        // Agregar el botón a la interfaz
+        const completionCard = document.querySelector('.complete-card');
+        completionCard.appendChild(btnSimular);
     }
 
     // Iniciar la carga de datos

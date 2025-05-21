@@ -3,41 +3,49 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnMarcarTodas = document.getElementById('marcar-todas');
   const btnEliminarTodas = document.getElementById('eliminar-todas');
 
-  // Datos de ejemplo mejorados
-  const notificaciones = [
-      {
-          id: 1,
-          icono: '🚲',
-          titulo: 'Bicicleta desanclada',
-          descripcion: 'Iniciaste tu recorrido con la bicicleta #104 en la estación Plaza Central.',
-          fecha: 'Hoy - 9:42am',
-          leida: false
-      },
-      {
-          id: 2,
-          icono: '✅',
-          titulo: 'Bicicleta entregada correctamente',
-          descripcion: '¡Gracias! Entregaste la bicicleta #104 en la estación Parque Norte sin novedades.',
-          fecha: 'Hoy - 10:18am',
-          leida: false
-      },
-      {
-          id: 3,
-          icono: '⭐',
-          titulo: '¡Ganaste puntos!',
-          descripcion: '+15 puntos por devolver la bicicleta en una estación ideal. Tu saldo actual es de 235 puntos.',
-          fecha: 'Ayer - 6:12pm',
-          leida: true
-      },
-      {
-          id: 4,
-          icono: '📅',
-          titulo: 'Reserva confirmada',
-          descripcion: 'Tu bicicleta ha sido reservada en Plaza Central por 15 minutos. ¡No olvides retirarla!',
-          fecha: '15 abr - 2:35pm',
-          leida: true
-      }
-  ];
+  // Obtener notificaciones guardadas en localStorage o usar el ejemplo por defecto
+  let notificaciones = JSON.parse(localStorage.getItem('notificaciones') || '[]');
+  
+  // Si no hay notificaciones guardadas, usar datos de ejemplo
+  if (notificaciones.length === 0) {
+      notificaciones = [
+          {
+              id: 1,
+              icono: '🚲',
+              titulo: 'Bicicleta desanclada',
+              descripcion: 'Iniciaste tu recorrido con la bicicleta #104 en la estación Plaza Central.',
+              fecha: 'Hoy - 9:42am',
+              leida: false
+          },
+          {
+              id: 2,
+              icono: '✅',
+              titulo: 'Bicicleta entregada correctamente',
+              descripcion: '¡Gracias! Entregaste la bicicleta #104 en la estación Parque Norte sin novedades.',
+              fecha: 'Hoy - 10:18am',
+              leida: false
+          },
+          {
+              id: 3,
+              icono: '⭐',
+              titulo: '¡Ganaste puntos!',
+              descripcion: '+15 puntos por devolver la bicicleta en una estación ideal. Tu saldo actual es de 235 puntos.',
+              fecha: 'Ayer - 6:12pm',
+              leida: true
+          },
+          {
+              id: 4,
+              icono: '📅',
+              titulo: 'Reserva confirmada',
+              descripcion: 'Tu bicicleta ha sido reservada en Plaza Central por 15 minutos. ¡No olvides retirarla!',
+              fecha: '15 abr - 2:35pm',
+              leida: true
+          }
+      ];
+      
+      // Guardar las notificaciones de ejemplo en localStorage
+      localStorage.setItem('notificaciones', JSON.stringify(notificaciones));
+  }
 
   // Renderizar notificaciones
   function renderizarNotificaciones() {
@@ -80,6 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       agregarEventosNotificaciones();
+      
+      // Actualizar contador en la barra de navegación si existe
+      actualizarContadorNotificaciones();
   }
 
   function agregarEventosNotificaciones() {
@@ -102,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const index = notificaciones.findIndex(n => n.id === id);
       if (index !== -1) {
           notificaciones[index].leida = true;
+          localStorage.setItem('notificaciones', JSON.stringify(notificaciones));
           renderizarNotificaciones();
           mostrarFeedback('Notificación marcada como leída');
       }
@@ -111,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const index = notificaciones.findIndex(n => n.id === id);
       if (index !== -1) {
           const notifEliminada = notificaciones.splice(index, 1)[0];
+          localStorage.setItem('notificaciones', JSON.stringify(notificaciones));
           renderizarNotificaciones();
           mostrarFeedback(`Notificación "${notifEliminada.titulo}" eliminada`);
       }
@@ -133,12 +146,30 @@ document.addEventListener('DOMContentLoaded', function() {
           }, 300);
       }, 3000);
   }
+  
+  // Nueva función: Actualizar el contador de notificaciones en la navbar
+  function actualizarContadorNotificaciones() {
+      // Contar notificaciones no leídas
+      const notificacionesNoLeidas = notificaciones.filter(n => !n.leida).length;
+      
+      // Si estamos en una página con la barra de navegación que tiene el contador
+      const notificationBadge = document.querySelector('.notification-badge');
+      if (notificationBadge) {
+          if (notificacionesNoLeidas > 0) {
+              notificationBadge.textContent = `+${notificacionesNoLeidas}`;
+              notificationBadge.style.display = 'flex';
+          } else {
+              notificationBadge.style.display = 'none';
+          }
+      }
+  }
 
   btnMarcarTodas.addEventListener('click', function() {
       if (notificaciones.some(n => !n.leida)) {
           notificaciones.forEach(notificacion => {
               notificacion.leida = true;
           });
+          localStorage.setItem('notificaciones', JSON.stringify(notificaciones));
           renderizarNotificaciones();
           mostrarFeedback('Todas las notificaciones marcadas como leídas');
       } else {
@@ -150,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (notificaciones.length > 0) {
           if (confirm('¿Estás seguro de que quieres eliminar todas las notificaciones?')) {
               notificaciones.length = 0;
+              localStorage.setItem('notificaciones', JSON.stringify(notificaciones));
               renderizarNotificaciones();
               mostrarFeedback('Todas las notificaciones eliminadas');
           }
