@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+</head>
+<body>
+  <!-- Header premium simplificado -->
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="principal.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="principal.html" class="active-menu">Inicio</a></li>
+          <li><a href="login.html">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download="Manual-CycleTech.pdf"><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="../vistas/incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación (Incumplimientos)</a></li>
+              <li><a href="../pdf/manual.pdf" download="Contrato-CycleTech.pdf"><i class="fas fa-file-contract"></i> Contrato de uso (PDF)</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons-minimal">
+        <a href="login.html" class="btn-auth btn-login-simple">Iniciar Sesión</a>
+        <a href="registro.html" class="btn-auth btn-register-minimal">Registrarse</a>
+      </div>
+    </div>
+  </header>
+
+  
+  </header>
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1><i class="fas fa-envelope"></i> Contáctanos</h1>
+      <p>¿Tienes alguna duda o comentario? Escríbenos y te responderemos pronto</p>
+    </div>
+  </section>
+
+  <!-- Main Form -->
+  <main class="contact-container">
+    <div class="contact-info">
+      <div class="info-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Teléfono</h3>
+        <p>+57 301 708 5321</p>
+        <p>Lunes a Viernes: 8am - 6pm</p>
+      </div>
+      
+      <div class="info-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Correo Electrónico</h3>
+        <p>cycletech.e@gmail.com</p>
+        <p>Respuesta en menos de 24h</p>
+      </div>
+      
+      <div class="info-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Oficina Principal</h3>
+        <p>Cra 52 #42-90</p>
+        <p>Medellín, Colombia</p>
+      </div>
+    </div>
+
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/manovvka" method="POST">
+      <h2><i class="fas fa-paper-plane"></i> Envíanos un mensaje</h2>
+      
+      <div class="form-row">
+        <div class="form-group required">
+          <label for="nombre">Nombre completo </label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+        </div>
+        
+        <div class="form-group required">
+          <label for="email">Correo electrónico </label>
+          <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono (opcional)</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567">
+      </div>
+
+      <div class="form-group required">
+        <label for="asunto">Asunto </label>
+        <select id="asunto" name="asunto" required>
+          <option value="" disabled selected>Selecciona un asunto</option>
+          <option value="informacion">Solicitud de información</option>
+          <option value="soporte">Soporte técnico</option>
+          <option value="comercial">Consulta comercial</option>
+          <option value="otros">Otros</option>
+        </select>
+      </div>
+
+      <div class="form-group required">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required rows="6" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <div class="hint">Mínimo 30 caracteres</div>
+      </div>
+      <!--
+      <div class="form-group">
+        <label for="adjunto">Adjuntar archivo (opcional)</label>
+        <div class="file-upload">
+          <input type="file" id="adjunto" name="adjunto" accept=".jpg,.png,.pdf,.doc,.docx">
+          <label for="adjunto" class="upload-btn">
+            <i class="fas fa-cloud-upload-alt"></i> Seleccionar archivo
+          </label>
+          <div class="file-info">Ningún archivo seleccionado</div>
+        </div>
+        <div class="hint">Máximo 5MB. Formatos: jpg, png, pdf, doc, docx</div>
+      </div>
+    -->
+      <div class="form-group checkbox-group required">
+        <input type="checkbox" id="privacidad" name="privacidad" required>
+        <label for="privacidad">Acepto la <a href="#" target="_blank">política de privacidad</a> y el tratamiento de mis datos</label>
+      </div>
+
+      <div class="form-actions">
+        <button type="reset" class="reset-btn">
+          <i class="fas fa-undo"></i> Limpiar
+        </button>
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane"></i> Enviar Mensaje
+        </button>
+      </div>
+    </form>
+
+      <!-- Botón de volver -->
+      <div class="back-button-container">
+        <a href="javascript:history.back()" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Volver
+        </a>
+      </div>
+    </form>
+
+
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/loadFooter.js"></script>
+  <script src="../js/formulario.js"></script>
+
+  <div id="chatbot-container">
+    <!-- El contenido se cargará dinámicamente -->
+  </div>
+    
+  <script>
+    // Carga diferida del chatbot
+    window.addEventListener('DOMContentLoaded', function() {
+      fetch("../chatbot/chatbot.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("chatbot-container").innerHTML = data;
+          // Carga el JS del chatbot
+          const script = document.createElement('script');
+          script.src = "../chatbot/chatbot.js";
+          document.body.appendChild(script);
+        });
+    });
+  </script>
+</body>
+</html>

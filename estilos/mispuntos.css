@@ -1,0 +1,395 @@
+:root {
+  --verde-ct: #4cc661;
+  --azul-ct: #1e3d59;
+  --amarillo-ct: #FFD700;
+  --gris-claro: #f5f5f5;
+  --gris-medio: #e0e0e0;
+  --texto-oscuro: #333;
+  --texto-claro: #666;
+  --positivo: #4CAF50;
+  --negativo: #F44336;
+  --azul-oscuro: #46798f;
+  --verde-oscuro: #4f7462;
+  --verde-claro: #dae7c9;
+  --azul-claro: #cae7ef;
+}
+
+.puntos-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* 1. Encabezado */
+.puntos-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.puntos-header h1 {
+  color: var(--azul-oscuro);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.puntos-header h1 i {
+  color: var(--amarillo-ct);
+  margin-right: 0.5rem;
+}
+
+.motivacion {
+  color: var(--texto-claro);
+  font-size: 1.1rem;
+}
+
+/* 2. Resumen de puntos */
+.resumen-puntos {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.puntos-circular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circulo-progreso {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: conic-gradient(var(--verde-oscuro) 288deg, var(--gris-medio) 288deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.circulo-progreso::before {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: white;
+  border-radius: 50%;
+}
+
+.puntos-total {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--azul-oscuro);
+  z-index: 1;
+}
+
+.nivel-actual {
+  font-size: 1rem;
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  z-index: 1;
+  margin-top: 0.5rem;
+}
+
+.proximo-nivel {
+  display: flex;
+  align-items: center;
+  background: var(--gris-claro);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-top: 1rem;
+}
+
+.proximo-nivel i {
+  color: var(--amarillo-ct);
+  margin-right: 0.5rem;
+}
+
+/* 3. Historial de puntos */
+.historial-puntos {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.historial-puntos h2 {
+  color: var(--azul-oscuro);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.historial-puntos h2 i {
+  margin-right: 0.5rem;
+  color: var(--amarillo-ct);
+}
+
+.filtros-historial {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtros-historial select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--gris-medio);
+  background: white;
+}
+
+.tabla-historial {
+  overflow-x: auto;
+}
+
+.tabla-historial table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-historial th, .tabla-historial td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.tabla-historial th {
+  background: var(--gris-claro);
+  color: var(--azul-oscuro);
+}
+
+.tabla-historial tr.positivo td:last-child {
+  color: var(--positivo);
+  font-weight: 600;
+}
+
+.tabla-historial tr.negativo td:last-child {
+  color: var(--negativo);
+  font-weight: 600;
+}
+
+/* 4. Recompensas disponibles */
+.recompensas-disponibles {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.recompensas-disponibles h2 {
+  color: var(--azul-oscuro);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.recompensas-disponibles h2 i {
+  margin-right: 0.5rem;
+  color: var(--amarillo-ct);
+}
+
+.grid-recompensas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.tarjeta-recompensa {
+  border: 1px solid var(--gris-medio);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta-recompensa:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.recompensa-img {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.tarjeta-recompensa h3 {
+  padding: 1rem 1rem 0;
+  color: var(--azul-oscuro);
+}
+
+.puntos-recompensa {
+  padding: 0 1rem;
+  color: var(--amarillo-ct);
+  font-weight: 600;
+}
+
+.btn-canjear {
+  display: block;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+  padding: 0.7rem;
+  background: var(--verde-oscuro);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-canjear:hover {
+  background: var(--verde-claro);
+}
+
+/* 5. Sumar más puntos */
+.sumar-puntos {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.sumar-puntos h2 {
+  color: var(--azul-ct);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.sumar-puntos h2 i {
+  margin-right: 0.5rem;
+  color: var(--amarillo-ct);
+}
+
+.lista-acciones {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.lista-acciones li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.lista-acciones li i {
+  color: var(--verde-oscuro);
+  margin-right: 0.5rem;
+}
+
+.btn-ver-mas {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: var(--azul-oscuro);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btn-ver-mas:hover {
+  background: var(--verde-oscuro);
+}
+
+/* 6. CTA */
+.cta-puntos {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn-primario {
+  padding: 1rem 2rem;
+  background: var(--verde-oscuro);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primario:hover {
+  background: var(--verde-oscuro);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--azul-oscuro);
+}
+
+.alternativo {
+  margin-top: 1rem;
+  color: var(--texto-claro);
+}
+
+.alternativo a {
+  color: var(--azul-oscuro);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.alternativo a:hover {
+  text-decoration: underline;
+}
+
+/* 7. Ayuda rápida */
+.ayuda-rapida {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.link-ayuda {
+  color: var(--azul-oscuro);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.link-ayuda:hover {
+  text-decoration: underline;
+}
+
+.link-ayuda i {
+  color: var(--amarillo-ct);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .puntos-container {
+    padding: 0 1rem;
+  }
+  
+  .resumen-puntos, .historial-puntos, 
+  .recompensas-disponibles, .sumar-puntos {
+    padding: 1.5rem;
+  }
+  
+  .grid-recompensas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .filtros-historial {
+    flex-direction: column;
+  }
+  
+  .tabla-historial th, .tabla-historial td {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .btn-primario {
+    width: 100%;
+    justify-content: center;
+  }
+}

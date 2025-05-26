@@ -1,0 +1,439 @@
+:root {
+    --verde-premium: #27ae60;
+    --rojo-alerta: #e74c3c;
+    --nivel-iniciado: #3498db;
+    --nivel-frecuente: #9b59b6;
+    --nivel-ejemplar: #f39c12;
+    --nivel-embajador: #2ecc71;
+  }
+  
+  .incentivos-main {
+    padding: 2rem 1rem;
+    background-color: linear-gradient(135deg, var(--azul-claro) 0%, var(--verde-claro) 100%);
+  }
+  
+  .incentivos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Hero informativo */
+  .info-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-content h1 {
+    color: var(--azul-oscuro);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .subtitle {
+    color: var(--texto-claro);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-illustration {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .hero-illustration img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Sección informativa */
+  .info-section {
+    margin-bottom: 3rem;
+  }
+  
+  .info-section h2 {
+    color: var(--azul-oscuro);
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .info-card {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra-suave);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .info-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .info-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--azul-claro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: var(--azul-oscuro);
+    font-size: 1.5rem;
+  }
+  
+  .info-card h3 {
+    color: var(--azul-oscuro);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Tablas de puntos */
+  .points-section {
+    margin-bottom: 3rem;
+  }
+  
+  .points-section h2 {
+    color: var(--azul-oscuro);
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .section-description {
+    color: var(--texto-claro);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+  
+  .points-tables {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .points-table {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra-suave);
+  }
+  
+  .points-table h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .points-table.positive h3 {
+    color: var(--verde-premium);
+  }
+  
+  .points-table.negative h3 {
+    color: var(--rojo-alerta);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--azul-claro);
+  }
+  
+  th {
+    background-color: var(--fondo);
+    color: var(--azul-oscuro);
+  }
+  
+  .points-table.positive td:last-child {
+    color: var(--verde-premium);
+    font-weight: bold;
+  }
+  
+  .points-table.negative td:last-child {
+    color: var(--rojo-alerta);
+    font-weight: bold;
+  }
+  
+  /* Niveles de reconocimiento */
+  .levels-section {
+    margin-bottom: 3rem;
+  }
+  
+  .levels-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 50px;
+  }
+  
+  .levels-timeline::before {
+    content: '';
+    position: absolute;
+    left: 35px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--nivel-iniciado), var(--nivel-embajador));
+  }
+  
+  .level {
+    display: flex;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .level-badge {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .level-badge.iniciado {
+    background-color: var(--nivel-iniciado);
+  }
+  
+  .level-badge.frecuente {
+    background-color: var(--nivel-frecuente);
+  }
+  
+  .level-badge.ejemplar {
+    background-color: var(--nivel-ejemplar);
+  }
+  
+  .level-badge.embajador {
+    background-color: var(--nivel-embajador);
+  }
+  
+  .level-info {
+    background-color: var(--blanco);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: var(--sombra-suave);
+    flex-grow: 1;
+  }
+  
+  .level-info h3 {
+    color: var(--azul-oscuro);
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+  }
+  
+  .level-info p {
+    margin: 0.3rem 0;
+    color: var(--texto-claro);
+  }
+  
+  .level-description {
+    font-style: italic;
+    margin-top: 0.5rem !important;
+  }
+  
+  /* Beneficios con comercios */
+  .partners-section {
+    margin-bottom: 3rem;
+  }
+  
+  .partners-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit-card {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra-suave);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s;
+  }
+  
+  .benefit-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .benefit-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+  }
+  
+  .benefit-icon.cafe {
+    background-color: #8e44ad;
+  }
+  
+  .benefit-icon.jugos {
+    background-color: #16a085;
+  }
+  
+  .benefit-icon.bici {
+    background-color: #c0392b;
+  }
+  
+  .benefit-info h3 {
+    color: var(--azul-oscuro);
+    margin: 0 0 0.3rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .benefit-info p {
+    margin: 0;
+    color: var(--texto-claro);
+    font-size: 0.9rem;
+  }
+  
+  .points-required {
+    margin-top: 0.5rem !important;
+    color: var(--azul-oscuro) !important;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  /* CTA de registro */
+  .register-cta {
+    background: linear-gradient(135deg, var(--azul-claro) 0%, var(--verde-claro) 100%);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .register-cta h2 {
+    color: var(--azul-oscuro);
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .register-cta p {
+    color: var(--texto);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+  }
+  
+  .btn-primary {
+    background-color: var(--azul-oscuro);
+    color: white;
+    box-shadow: 0 4px 15px rgba(70, 121, 143, 0.3);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--verde-oscuro);
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--azul-oscuro);
+    border: 2px solid var(--azul-oscuro);
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 1.8rem;
+    }
+    
+    .points-tables {
+      grid-template-columns: 1fr;
+    }
+    
+    .levels-timeline {
+      padding-left: 30px;
+    }
+    
+    .level-badge {
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 1.5rem;
+    }
+    
+    .info-cards {
+      grid-template-columns: 1fr;
+    }
+    
+    .levels-timeline::before {
+      left: 25px;
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }

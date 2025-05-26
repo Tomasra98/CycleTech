@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes y Contacto - CycleTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilos/principal.css">
+  <link rel="stylesheet" href="../chatbot/chatbot.css">
+  <link rel="stylesheet" href="../estilos/faq.css">
+  <link rel="stylesheet" href="../estilos/estaciones.css">
+  <link rel="stylesheet" href="../estilos/incumplimientos.css">
+  <link rel="stylesheet" href="../estilos/contacto.css">
+  <link rel="stylesheet" href="../estilos/formulario.css">
+  <link rel="stylesheet" href="../estilos/login.css">
+  <link rel="stylesheet" href="../estilos/perfil.css">
+  <link rel="stylesheet" href="../estilos/pqrsd.css">
+  <link rel="stylesheet" href="../estilos/registro.css">
+  <link rel="stylesheet" href="../estilos/incentivos.css">
+  <link rel="stylesheet" href="../estilos/index.css">
+  <link rel="stylesheet" href="../estilos/reservar.css">
+  <link rel="stylesheet" href="../estilos/mispuntos.css">
+  <link rel="stylesheet" href="../estilos/notificacion.css">
+
+
+
+</head>
+<body>
+  <!-- Header premium simplificado -->
+  <header class="header-minimalista">
+    <div class="container-header">
+      <div class="logo-container">
+        <a href="principal.html">
+          <img src="../imagen/logo.png" alt="CycleTech" class="logo-simplificado">
+        </a>
+      </div>
+      
+      <nav class="nav-elegante">
+        <ul class="menu-delgado">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="login.html">Reservar</a></li>
+          <li><a href="estaciones.html">Estaciones</a></li>
+          <li><a href="incentivos.html">Incentivos</a></li>
+          <li><a href="faq.html">Preguntas Frecuentes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Guías y condiciones <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="../pdf/manual.pdf" download="Manual-CycleTech.pdf"><i class="fas fa-file-pdf"></i> Manual (PDF)</a></li>
+              <li><a href="../vistas/incumplimientos.html"><i class="fas fa-list-alt"></i> Reglamentación (Incumplimientos)</a></li>
+              <li><a href="../pdf/manual.pdf" download="Contrato-CycleTech.pdf"><i class="fas fa-file-contract"></i> Contrato de uso (PDF)</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html" class="active-menu">Ayuda</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons-minimal">
+        <a href="login.html" class="btn-auth btn-login-simple">Iniciar Sesión</a>
+        <a href="registro.html" class="btn-auth btn-register-minimal">Registrarse</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Hero section modificada -->
+  <section class="faq-hero">
+    <div class="faq-hero-content">
+      <h1 class="faq-hero-title">
+        <i class="fas fa-question-circle"></i> Centro de Ayuda
+      </h1>
+      <p class="faq-hero-subtitle">Encuentra respuestas rápidas o contacta a nuestro equipo</p>
+      
+      <div class="help-notice">
+        <i class="fas fa-info-circle"></i>
+        <div class="notice-content">
+          <p>Revisa primero nuestras preguntas frecuentes sobre el sistema EnCicla. Si no encuentras respuesta a tu pregunta, identifica si es una PQRSD. Para cualquier otro asunto, contáctanos.</p>
+          <div class="action-buttons">
+            <a href="faq.html" class="faq-btn">
+              <i class="fas fa-search"></i> Ver Preguntas Frecuentes
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <main class="faq-main-content">
+    <div class="faq-container">
+      <!-- Mantén todo tu acordeón de preguntas existente -->
+      
+      <!-- Nueva sección de PQRSD y Contacto -->
+      <div class="contact-options">
+        <div class="pqrsd-info card-hover">
+          <div class="card-icon">
+            <i class="fas fa-clipboard-check"></i>
+          </div>
+          <h3>¿Es una PQRSD?</h3>
+          <p>Si tu consulta es una Petición, Queja, Reclamo o Sugerencia, por favor selecciona esta opción:</p>
+          <a href="pqrsd.html" class="pqrsd-btn">
+            <i class="fas fa-file-alt"></i> Ir al formulario PQRSD
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <div class="contact-form-link card-hover">
+          <div class="card-icon">
+            <i class="fas fa-comment-dots"></i>
+          </div>
+          <h3>Contacto general</h3>
+          <p>Para consultas no categorizadas como PQRSD o preguntas frecuentes:</p>
+          <a href="formulario.html" class="contact-form-btn">
+            <i class="fas fa-paper-plane"></i> Ir al formulario de contacto
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Contenedor del footer -->
+  <div id="footer-container"></div>
+
+  <!-- Cargar Font Awesome (si no lo tienes) -->
+  <script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+  
+  <!-- Cargar el script que inserta el footer -->
+  <script src="../js/loadFooter.js"></script>
+
+  <!-- Script para cargar el chatbot -->
+  <div id="chatbot-container">
+    <!-- El contenido se cargará dinámicamente -->
+  </div>
+    
+<!-- Chatbot Container -->
+<div id="chatbot-global-container"></div>
+
+<script>
+  // Función para cargar el chatbot
+  function loadChatbot() {
+    // Verificar si ya está cargado
+    if (window.chatbotLoaded) return;
+    window.chatbotLoaded = true;
+    
+    // Cargar recursos
+    Promise.all([
+      // Cargar HTML
+      fetch('../chatbot/chatbot.html').then(r => r.text()),
+      // Cargar CSS
+      new Promise(resolve => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '../chatbot/chatbot.css';
+        link.onload = resolve;
+        document.head.appendChild(link);
+      }),
+      // Cargar JS
+      new Promise(resolve => {
+        const script = document.createElement('script');
+        script.src = '../chatbot/chatbot.js';
+        script.onload = resolve;
+        document.body.appendChild(script);
+      })
+    ])
+    .then(([html]) => {
+      document.getElementById('chatbot-global-container').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error loading chatbot:', error);
+    });
+  }
+
+  // Cargar cuando el DOM esté listo
+  if (document.readyState === 'complete') {
+    loadChatbot();
+  } else {
+    document.addEventListener('DOMContentLoaded', loadChatbot);
+  }
+</script>
+</body>
+</html>

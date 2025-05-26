@@ -1,0 +1,69 @@
+🧩 Paso B: Inserta el chatbot en todas tus páginas
+Agrega este fragmento al final del <body> de cada HTML, justo antes de </body>:
+
+<!-- Script para cargar el chatbot -->
+<div id="chatbot-container">
+  <!-- El contenido se cargará dinámicamente -->
+</div>
+  
+<script>
+  // Carga diferida del chatbot
+  window.addEventListener('DOMContentLoaded', function() {
+    fetch("../chatbot/chatbot.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("chatbot-container").innerHTML = data;
+        // Carga el JS del chatbot
+        const script = document.createElement('script');
+        script.src = "../chatbot/chatbot.js";
+        document.body.appendChild(script);
+      });
+  });
+</script>
+
+
+cambio esto
+<div class="logo">
+    <img src="imagen/logo.png" alt="Logo" />
+  </div>
+   por esto
+   
+   
+   
+   <div class="logo">
+    <a href="principall.html">
+      <img src="imagen/logo.png" alt="Logo" />
+    </a>
+  </div>
+  
+  ✅ Paso 2: Enlaza chatbot.css en todas tus páginas
+  En cada archivo .html donde estás cargando el chatbot (como hicimos con el fetch("chatbot.html")), agrégale esto en la parte del <head>:
+  <link rel="stylesheet" href="chatbot/chatbot.css" />
+
+
+ #footer
+
+ <!-- Contenedor del footer -->
+<div id="footer-container"></div>
+
+<!-- Cargar Font Awesome (si no lo tienes) -->
+<script src="https://kit.fontawesome.com/aqua-tu-codigo.js" crossorigin="anonymous"></script>
+
+<!-- Cargar el script que inserta el footer -->
+<script src="../js/loadFooter.js"></script>
+
+<!-- Al final del body -->
+<script src="../js/estaciones.js"></script>
+
+
+// En reservar.html
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const estacionParam = urlParams.get('estacion');
+  
+  if (estacionParam) {
+    const nombreEstacion = decodeURIComponent(estacionParam);
+    document.getElementById('nombre-estacion').textContent = nombreEstacion;
+    // Aquí puedes usar nombreEstacion para cargar datos específicos de la estación
+  }
+});
